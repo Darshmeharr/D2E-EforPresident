@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>No Contact • D to E</title>
+<title>No Contact From D to E</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,153 +16,113 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
 }
 
 body{
 
-    min-height:100vh;
-
-    overflow:hidden;
-
-    font-family:'Poppins',sans-serif;
+    background:
+    radial-gradient(circle at top,#141414,#050505 60%,#000000);
 
     color:white;
 
-    background:
-    radial-gradient(circle at top,#151515 0%,#070707 40%,#000000 100%);
+    font-family:'Playfair Display',serif;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
+    padding:20px;
+
     position:relative;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND GLOW */
 
-.stars{
+body::before{
+
+    content:"";
 
     position:fixed;
+
     inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.05),
+    transparent 55%);
+
+    pointer-events:none;
+
     z-index:0;
 }
 
-.star{
+/* FALLING ELEMENTS */
 
-    position:absolute;
+.falling{
 
-    width:2px;
-    height:2px;
+    position:fixed;
 
-    background:white;
+    top:-10vh;
 
-    border-radius:50%;
+    color:rgba(255,255,255,0.15);
 
-    opacity:.7;
+    animation:fall linear infinite;
 
-    animation:twinkle 3s infinite ease-in-out;
+    z-index:1;
+
+    pointer-events:none;
 }
 
-@keyframes twinkle{
+@keyframes fall{
 
-    0%{
-        opacity:.2;
-        transform:scale(1);
+    from{
+        transform:translateY(-10vh) rotate(0deg);
     }
 
-    50%{
-        opacity:1;
-        transform:scale(1.8);
-    }
-
-    100%{
-        opacity:.2;
-        transform:scale(1);
+    to{
+        transform:translateY(120vh) rotate(360deg);
     }
 }
 
-/* ===== AURORA ===== */
-
-.aurora{
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    filter:blur(100px);
-
-    opacity:.18;
-
-    animation:moveAurora 12s infinite alternate ease-in-out;
-}
-
-.aurora1{
-
-    background:#ffffff;
-
-    top:-150px;
-    left:-100px;
-}
-
-.aurora2{
-
-    background:#444444;
-
-    bottom:-150px;
-    right:-100px;
-
-    animation-delay:4s;
-}
-
-@keyframes moveAurora{
-
-    0%{
-        transform:translate(0,0) scale(1);
-    }
-
-    100%{
-        transform:translate(60px,-40px) scale(1.2);
-    }
-}
-
-/* ===== FLOAT TEXT ===== */
+/* TOP FLOATING TEXT */
 
 #floatText{
 
     position:fixed;
 
-    top:18px;
+    top:12px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    z-index:5;
+    width:92%;
+
+    text-align:center;
 
     font-family:'Great Vibes',cursive;
 
-    font-size:22px;
+    font-size:18px;
 
-    color:#eaeaea;
+    color:#d6d6d6;
 
-    letter-spacing:2px;
+    z-index:5;
 
-    animation:floating 3s infinite ease-in-out;
+    animation:float 3s ease-in-out infinite;
 }
 
-@keyframes floating{
+@keyframes float{
 
     0%{
         transform:translateX(-50%) translateY(0);
     }
 
     50%{
-        transform:translateX(-50%) translateY(-6px);
+        transform:translateX(-50%) translateY(-4px);
     }
 
     100%{
@@ -170,129 +130,85 @@ body{
     }
 }
 
-/* ===== MAIN CARD ===== */
+/* MAIN CARD */
 
 .container{
+
+    width:100%;
+    max-width:950px;
+
+    padding:45px 35px;
+
+    border-radius:32px;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 0 45px rgba(255,255,255,0.05);
+
+    text-align:center;
 
     position:relative;
 
     z-index:2;
-
-    width:90%;
-    max-width:980px;
-
-    padding:50px 35px;
-
-    border-radius:35px;
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-    0 0 40px rgba(255,255,255,.05),
-    inset 0 0 30px rgba(255,255,255,.02);
-
-    overflow:hidden;
-
-    animation:fadeUp 1.5s ease;
 }
 
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* ===== GLOW BORDER ===== */
-
-.container::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:35px;
-
-    padding:1px;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.15),
-        transparent,
-        rgba(255,255,255,.08)
-    );
-
-    -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite:xor;
-
-    pointer-events:none;
-}
-
-/* ===== TITLE ===== */
+/* TITLES */
 
 .space-title{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:70px;
+    font-size:62px;
 
-    text-align:center;
+    margin-bottom:10px;
 
-    margin-bottom:12px;
-
-    color:white;
-
-    text-shadow:
-    0 0 10px rgba(255,255,255,.2);
-
-    animation:glow 4s infinite alternate;
+    opacity:.95;
 }
 
-@keyframes glow{
+h1{
 
-    from{
-        text-shadow:0 0 10px rgba(255,255,255,.15);
-    }
+    font-size:54px;
 
-    to{
-        text-shadow:
-        0 0 18px rgba(255,255,255,.3),
-        0 0 35px rgba(255,255,255,.1);
-    }
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+
+    color:#f4f4f4;
 }
 
-.names{
+/* LIVE STATUS */
 
-    text-align:center;
+.liveDot{
 
-    font-family:'Cinzel',serif;
+    width:12px;
+    height:12px;
 
-    font-size:34px;
+    border-radius:50%;
 
-    letter-spacing:4px;
+    background:#666;
 
-    margin-bottom:28px;
+    display:inline-block;
 
-    color:#f2f2f2;
+    margin-right:8px;
 }
 
-/* ===== CLOCKS ===== */
+.status{
+
+    margin-top:15px;
+
+    margin-bottom:25px;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+/* CLOCKS */
 
 .clocks{
 
@@ -300,217 +216,131 @@ body{
 
     justify-content:center;
 
-    gap:22px;
+    gap:30px;
 
     flex-wrap:wrap;
 
-    margin-bottom:28px;
+    margin-bottom:25px;
+
+    color:#d7d7d7;
 }
 
-.clock{
+/* MESSAGE */
 
-    min-width:230px;
+.message{
 
-    padding:18px;
+    font-size:18px;
 
-    border-radius:20px;
+    line-height:1.9;
 
-    background:rgba(255,255,255,.04);
+    color:#dddddd;
 
-    border:1px solid rgba(255,255,255,.08);
-
-    text-align:center;
-
-    transition:.4s;
+    margin-bottom:25px;
 }
 
-.clock:hover{
+.quote{
 
-    transform:translateY(-5px);
+    font-style:italic;
 
-    background:rgba(255,255,255,.06);
-}
+    color:#f0f0f0;
 
-.clock h3{
-
-    font-size:15px;
-
-    color:#d9d9d9;
-
-    margin-bottom:10px;
-}
-
-.clock span{
-
-    font-size:22px;
-
-    font-weight:600;
-}
-
-/* ===== STATUS ===== */
-
-.status{
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:600;
+    margin-top:10px;
 
     margin-bottom:30px;
+}
 
-    color:#ffffff;
+/* HEART BUTTON */
 
-    animation:pulse 2s infinite;
+.heart{
+
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:
+    radial-gradient(circle,#1a1a1a,#090909);
+
+    color:white;
+
+    font-size:40px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.08);
+
+    animation:pulse 2.2s infinite;
+}
+
+.heart:hover{
+
+    transform:scale(1.08);
 }
 
 @keyframes pulse{
 
     0%{
-        opacity:.6;
+        box-shadow:0 0 0 rgba(255,255,255,0.2);
     }
 
     50%{
-        opacity:1;
+        box-shadow:0 0 30px rgba(255,255,255,0.12);
     }
 
     100%{
-        opacity:.6;
+        box-shadow:0 0 0 rgba(255,255,255,0.2);
     }
 }
 
-/* ===== QUOTE ===== */
-
-.poem{
-
-    text-align:center;
-
-    font-size:18px;
-
-    line-height:2;
-
-    color:#d6d6d6;
-
-    margin-bottom:25px;
-}
-
-/* ===== GURBANI ===== */
-
-.gurbani{
-
-    text-align:center;
-
-    font-size:20px;
-
-    color:#ffffff;
-
-    font-style:italic;
-
-    margin-bottom:35px;
-
-    opacity:.9;
-}
-
-/* ===== HEART ===== */
-
-.heartWrap{
-
-    display:flex;
-    justify-content:center;
-}
-
-.heart{
-
-    width:90px;
-    height:90px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(circle,#1f1f1f,#090909);
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:42px;
-
-    cursor:pointer;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-    0 0 25px rgba(255,255,255,.08);
-
-    transition:.4s;
-
-    animation:heartbeat 2s infinite;
-}
-
-.heart:hover{
-
-    transform:scale(1.1) rotate(5deg);
-
-    box-shadow:
-    0 0 45px rgba(255,255,255,.15);
-}
-
-@keyframes heartbeat{
-
-    0%{
-        transform:scale(1);
-    }
-
-    25%{
-        transform:scale(1.05);
-    }
-
-    50%{
-        transform:scale(1);
-    }
-
-    75%{
-        transform:scale(1.08);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-}
-
-/* ===== BUTTON ===== */
+/* MUSIC BUTTON */
 
 .music-btn{
 
-    display:block;
-
-    margin:30px auto 0;
+    margin-top:25px;
 
     padding:14px 28px;
 
-    border:none;
-
     border-radius:40px;
 
-    background:white;
+    border:1px solid rgba(255,255,255,0.1);
 
-    color:black;
+    background:#111;
 
-    font-weight:600;
+    color:white;
 
     cursor:pointer;
 
-    transition:.4s;
+    font-size:16px;
+
+    transition:.3s;
 }
 
 .music-btn:hover{
 
     transform:scale(1.05);
 
+    background:#1d1d1d;
+}
+
+/* SECRET NOTE */
+
+.secret{
+
+    margin-top:28px;
+
+    font-size:14px;
+
+    color:#a7a7a7;
+
     letter-spacing:1px;
 }
 
-/* ===== POPUP ===== */
+/* POPUP */
 
 .popup{
 
@@ -518,32 +348,36 @@ body{
 
     inset:0;
 
-    background:rgba(0,0,0,.9);
-
     display:none;
 
     justify-content:center;
+
     align-items:center;
 
-    z-index:999;
+    background:rgba(0,0,0,0.9);
+
+    z-index:9999;
+
+    padding:20px;
 }
 
 .popupContent{
 
-    width:90%;
-    max-width:430px;
+    width:100%;
+    max-width:560px;
 
     padding:35px;
 
     border-radius:30px;
 
-    background:#0d0d0d;
+    background:
+    linear-gradient(180deg,#111,#080808);
+
+    border:1px solid rgba(255,255,255,0.08);
 
     text-align:center;
 
-    border:1px solid rgba(255,255,255,.08);
-
-    animation:fadeUp .5s ease;
+    line-height:1.9;
 }
 
 .popupContent h2{
@@ -552,67 +386,79 @@ body{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:42px;
+    font-size:38px;
 }
 
 .closeBtn{
 
-    margin-top:22px;
+    margin-top:25px;
 
     cursor:pointer;
 
-    opacity:.7;
+    color:#d5d5d5;
 }
 
-.closeBtn:hover{
-
-    opacity:1;
-}
-
-/* ===== MOBILE ===== */
+/* MOBILE */
 
 @media(max-width:768px){
 
-    body{
-        overflow:auto;
-        padding:20px;
-    }
-
     .container{
-        padding:35px 22px;
+
+        padding:28px 18px;
     }
 
     .space-title{
-        font-size:46px;
+
+        font-size:40px;
     }
 
-    .names{
-        font-size:22px;
-        letter-spacing:2px;
+    h1{
+
+        font-size:30px;
+
+        letter-spacing:1px;
     }
 
-    .clock{
-        width:100%;
-    }
+    .message{
 
-    .poem{
         font-size:15px;
     }
 
-    .gurbani{
-        font-size:16px;
+    .quote{
+
+        font-size:14px;
     }
 
     .heart{
-        width:75px;
-        height:75px;
-        font-size:35px;
+
+        width:80px;
+        height:80px;
+
+        font-size:32px;
+    }
+
+    .music-btn{
+
+        width:100%;
+    }
+
+    .clocks{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        font-size:14px;
     }
 
     #floatText{
-        font-size:16px;
-        width:90%;
-        text-align:center;
+
+        font-size:14px;
+    }
+
+    .popupContent{
+
+        padding:25px 18px;
     }
 }
 
@@ -621,68 +467,96 @@ body{
 
 <body>
 
-<div class="stars" id="stars"></div>
-
-<div class="aurora aurora1"></div>
-<div class="aurora aurora2"></div>
-
 <div id="floatText">
-    Sunday • 3AM — 6AM IST 🌙
+    Active only on Sundays • 3AM to 6AM IST 🌙
 </div>
+
+<!-- FALLING EFFECT -->
+
+<script>
+
+const symbols = ["🖤","☾","✦","🌑","❖","🕊"];
+
+for(let i=0;i<40;i++){
+
+    const el = document.createElement("div");
+
+    el.className = "falling";
+
+    el.innerHTML =
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left = Math.random()*100 + "vw";
+
+    el.style.animationDuration =
+    (6 + Math.random()*7) + "s";
+
+    el.style.fontSize =
+    (16 + Math.random()*24) + "px";
+
+    document.body.appendChild(el);
+}
+
+</script>
 
 <div class="container">
 
     <div class="space-title">
-        Having No Contact
+        Having No Contact From D to E
     </div>
 
-    <div class="names">
-        DARSHMEHAR ✦ EEMANJOT
-    </div>
+    <h1>EEMANJOT KAUR</h1>
 
     <div class="clocks">
 
-        <div class="clock">
-            <h3>🇮🇳 India</h3>
-            <span id="indiaTime">--</span>
+        <div id="indiaTime">
+            🇮🇳 India: --
         </div>
 
-        <div class="clock">
-            <h3>🇨🇦 Canada</h3>
-            <span id="canadaTime">--</span>
+        <div id="canadaTime">
+            🇨🇦 Canada: --
         </div>
 
     </div>
 
-    <div class="status" id="activeStatus">
-        Checking silence...
-    </div>
+    <div class="status" id="statusText">
 
-    <div class="poem">
+        <span class="liveDot" id="liveDot"></span>
 
-        Some people leave quietly,<br>
-        but their memories stay loud.<br><br>
-
-        Sundays feel different now.<br>
-        Even silence has a timezone.
+        Checking activity...
 
     </div>
 
-    <div class="gurbani">
+    <div class="message">
+
+        Some people arrive softly,<br>
+        but stay inside your mind loudly.<br><br>
+
+        Sundays became memories.<br>
+        3AM became a feeling.<br><br>
+
+        Maybe distance isn't silence.<br>
+        Maybe it's just timing.
+
+    </div>
+
+    <div class="quote">
         "ਹੁਕਮਿ ਰਜਾਈ ਚਲਣਾ ਨਾਨਕ ਲਿਖਿਆ ਨਾਲਿ"
     </div>
 
-    <div class="heartWrap">
+    <button class="heart" onclick="openMessage()">
+        🖤
+    </button>
 
-        <div class="heart" onclick="openPopup()">
-            🖤
-        </div>
-
-    </div>
+    <br>
 
     <button class="music-btn" onclick="toggleMusic(this)">
         ▶ Play Music
     </button>
+
+    <div class="secret">
+        maybe some stories are written at night...
+    </div>
 
 </div>
 
@@ -692,9 +566,9 @@ body{
 
     <div class="popupContent">
 
-        <h2>Silent Message</h2>
+        <h2>For You 🌙</h2>
 
-        <div id="popupMsg"></div>
+        <div id="popupMessage"></div>
 
         <div class="closeBtn"
         onclick="closePopup()">
@@ -707,7 +581,7 @@ body{
 
 </div>
 
-<!-- AUDIO -->
+<!-- MUSIC -->
 
 <audio id="bgMusic" loop>
     <source src="excuses.mp3" type="audio/mpeg">
@@ -715,32 +589,20 @@ body{
 
 <script>
 
-/* ===== STARS ===== */
-
-const stars = document.getElementById("stars");
-
-for(let i = 0; i < 120; i++){
-
-    let star = document.createElement("div");
-
-    star.className = "star";
-
-    star.style.left = Math.random()*100 + "%";
-
-    star.style.top = Math.random()*100 + "%";
-
-    star.style.animationDelay =
-    Math.random()*3 + "s";
-
-    stars.appendChild(star);
-}
-
-/* ===== MUSIC ===== */
+// MUSIC
 
 const bgMusic =
 document.getElementById("bgMusic");
 
 let playing = false;
+
+document.body.addEventListener("click",()=>{
+
+    bgMusic.volume = 0.45;
+
+    bgMusic.play().catch(()=>{});
+
+},{once:true});
 
 function toggleMusic(btn){
 
@@ -748,78 +610,37 @@ function toggleMusic(btn){
 
         bgMusic.pause();
 
-        btn.innerText = "▶ Play Music";
+        btn.innerHTML =
+        "▶ Play Music";
 
-    }else{
-
-        bgMusic.volume = 0.5;
+    } else {
 
         bgMusic.play();
 
-        btn.innerText = "⏸ Pause Music";
+        btn.innerHTML =
+        "⏸ Pause Music";
     }
 
     playing = !playing;
 }
 
-/* ===== POPUP ===== */
-
-function openPopup(){
-
-    document.getElementById("popup")
-    .style.display = "flex";
-
-    updatePopup();
-}
-
-function closePopup(){
-
-    document.getElementById("popup")
-    .style.display = "none";
-}
-
-function updatePopup(){
-
-    const india = new Date(
-        new Date().toLocaleString(
-            "en-US",
-            {timeZone:"Asia/Kolkata"}
-        )
-    );
-
-    const day = india.getDay();
-
-    const hour = india.getHours();
-
-    const isSunday = day === 0;
-
-    const isActive = hour >= 3 && hour < 6;
-
-    if(isSunday && isActive){
-
-        document.getElementById("popupMsg")
-        .innerHTML =
-        "🌙 Some feelings never really log out.";
-
-    }else{
-
-        document.getElementById("popupMsg")
-        .innerHTML =
-        "Currently offline.<br><br>Return Sunday between 3AM and 6AM IST 🖤";
-    }
-}
-
-/* ===== CLOCKS ===== */
+// CLOCKS + STATUS
 
 function updateClocks(){
 
     const now = new Date();
 
+    const india = new Date(
+        now.toLocaleString(
+            "en-US",
+            {timeZone:"Asia/Kolkata"}
+        )
+    );
+
     const indiaTime =
-    now.toLocaleTimeString(
+    india.toLocaleTimeString(
         "en-IN",
         {
-            timeZone:"Asia/Kolkata",
             hour:"2-digit",
             minute:"2-digit",
             second:"2-digit",
@@ -839,16 +660,59 @@ function updateClocks(){
         }
     );
 
-    document.getElementById("indiaTime")
-    .innerText = indiaTime;
+    document.getElementById("indiaTime").innerHTML =
+    "🇮🇳 India: " + indiaTime;
 
-    document.getElementById("canadaTime")
-    .innerText = canadaTime;
+    document.getElementById("canadaTime").innerHTML =
+    "🇨🇦 Canada: " + canadaTime;
 
-    /* STATUS */
+    const day = india.getDay();
+
+    const hour = india.getHours();
+
+    const active =
+    day === 0 && hour >=3 && hour <6;
+
+    const status =
+    document.getElementById("statusText");
+
+    const dot =
+    document.getElementById("liveDot");
+
+    if(active){
+
+        status.innerHTML =
+        `<span class="liveDot"
+        style="background:#00ff99;
+        box-shadow:0 0 15px #00ff99;"></span>
+
+        🟢 Currently Active`;
+
+        document.getElementById("floatText").innerHTML =
+        "Sunday • 3AM - 6AM IST • Updating Daily 🌙";
+
+    } else {
+
+        status.innerHTML =
+        `<span class="liveDot"></span>
+
+        ⚫ Offline Until Sunday 3AM IST`;
+
+        document.getElementById("floatText").innerHTML =
+        "Active only on Sundays • 3AM to 6AM IST 🌙";
+    }
+}
+
+setInterval(updateClocks,1000);
+
+updateClocks();
+
+// POPUP MESSAGE
+
+function openMessage(){
 
     const india = new Date(
-        now.toLocaleString(
+        new Date().toLocaleString(
             "en-US",
             {timeZone:"Asia/Kolkata"}
         )
@@ -858,28 +722,56 @@ function updateClocks(){
 
     const hour = india.getHours();
 
-    const isSunday = day === 0;
+    const active =
+    day === 0 && hour >=3 && hour <6;
 
-    const isActive = hour >= 3 && hour < 6;
+    const popup =
+    document.getElementById("popup");
 
-    const status =
-    document.getElementById("activeStatus");
+    const msg =
+    document.getElementById("popupMessage");
 
-    if(isSunday && isActive){
+    popup.style.display = "flex";
 
-        status.innerHTML =
-        "🟢 Currently Active";
+    if(active){
 
-    }else{
+        msg.innerHTML =
 
-        status.innerHTML =
-        "⚫ Offline Until Sunday 3AM IST";
+        `Heyyy love 🖤<br><br>
+
+        This page is designed for you.<br><br>
+
+        You called me creative right…<br>
+        so here’s just a small taste of being with me.<br><br>
+
+        More you'll see when you'll actually be with me 🌙<br><br>
+
+        Told you… if you don't have someone,<br>
+        you have me.<br><br>
+
+        Don't you think<br>
+        <b>Eemanjot Kaur</b> looks good with<br>
+        <b>Darshmehar Singh</b>? 🖤<br><br>
+
+        After Sunday…<br>
+        I'll look for some red sign on your IG Story ❤️`;
+
+    } else {
+
+        msg.innerHTML =
+
+        `Currently offline 🌑<br><br>
+
+        Come back Sunday between
+        <b>3AM and 6AM IST</b> 🖤`;
     }
 }
 
-setInterval(updateClocks,1000);
+function closePopup(){
 
-updateClocks();
+    document.getElementById("popup")
+    .style.display = "none";
+}
 
 </script>
 
