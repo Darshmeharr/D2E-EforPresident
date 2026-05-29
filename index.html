@@ -41,11 +41,9 @@ body{
     padding:20px;
 
     position:relative;
-
-    transition:1s ease;
 }
 
-/* GLOW */
+/* BACKGROUND GLOW */
 
 body::before{
 
@@ -65,13 +63,11 @@ body::before{
     pointer-events:none;
 }
 
-/* FLOATING SYMBOLS */
+/* STARS */
 
 .star{
 
     position:fixed;
-
-    top:-10vh;
 
     color:rgba(255,255,255,0.12);
 
@@ -135,7 +131,7 @@ body::before{
     }
 }
 
-/* CARD */
+/* MAIN CARD */
 
 .container{
 
@@ -162,11 +158,9 @@ body::before{
     text-align:center;
 
     overflow:hidden;
-
-    transition:.8s ease;
 }
 
-/* LIGHT EFFECT */
+/* SMALL GLOW */
 
 .container::before{
 
@@ -188,7 +182,7 @@ body::before{
     border-radius:50%;
 }
 
-/* TITLES */
+/* TITLE */
 
 .love{
 
@@ -214,6 +208,19 @@ body::before{
     color:#e8e8e8;
 }
 
+/* STATUS */
+
+.status{
+
+    margin-bottom:25px;
+
+    font-size:18px;
+
+    color:#f3f3f3;
+
+    line-height:1.8;
+}
+
 /* CLOCKS */
 
 .clocks{
@@ -233,20 +240,7 @@ body::before{
     font-size:15px;
 }
 
-/* STATUS */
-
-.status{
-
-    margin-bottom:28px;
-
-    font-size:18px;
-
-    line-height:1.8;
-
-    color:#efefef;
-}
-
-/* MESSAGE */
+/* MAIN TEXT */
 
 .message{
 
@@ -254,21 +248,27 @@ body::before{
 
     line-height:2;
 
-    color:#dddddd;
+    color:#dcdcdc;
 
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
+
+/* FOREVER SECTION */
 
 .forever{
 
+    margin-top:10px;
+
     margin-bottom:30px;
 
-    color:#b8b8b8;
+    font-size:16px;
 
-    line-height:1.8;
+    color:#bcbcbc;
+
+    line-height:1.9;
 }
 
-/* HEART BUTTON */
+/* BUTTON */
 
 .heartBtn{
 
@@ -290,7 +290,7 @@ body::before{
 
     cursor:pointer;
 
-    transition:.5s;
+    transition:.4s;
 
     box-shadow:
     0 0 25px rgba(255,255,255,0.08);
@@ -298,24 +298,24 @@ body::before{
     animation:pulse 2.5s infinite;
 }
 
+.heartBtn:hover{
+
+    transform:scale(1.08);
+}
+
 @keyframes pulse{
 
     0%{
-        transform:scale(1);
+        box-shadow:0 0 10px rgba(255,255,255,0.04);
     }
 
     50%{
-        transform:scale(1.05);
+        box-shadow:0 0 35px rgba(255,255,255,0.12);
     }
 
     100%{
-        transform:scale(1);
+        box-shadow:0 0 10px rgba(255,255,255,0.04);
     }
-}
-
-.heartBtn:hover{
-
-    transform:scale(1.1);
 }
 
 /* MUSIC BUTTON */
@@ -343,20 +343,20 @@ body::before{
 
 .musicBtn:hover{
 
-    background:#1b1b1b;
-
     transform:scale(1.05);
+
+    background:#1a1a1a;
 }
 
 /* SECRET */
 
 .secret{
 
-    margin-top:28px;
-
-    color:#8f8f8f;
+    margin-top:30px;
 
     font-size:14px;
+
+    color:#8f8f8f;
 
     letter-spacing:2px;
 }
@@ -445,6 +445,8 @@ body::before{
     .message{
 
         font-size:15px;
+
+        line-height:1.9;
     }
 
     .forever{
@@ -492,7 +494,7 @@ body::before{
     some people feel like destiny at 3AM 🌙
 </div>
 
-<!-- FLOATING SYMBOLS -->
+<!-- FALLING SYMBOLS -->
 
 <script>
 
@@ -528,7 +530,7 @@ for(let i=0;i<45;i++){
     </div>
 
     <div class="names">
-        SOME CONNECTIONS ARRIVE LIKE DESTINY
+        SOME CONNECTIONS NEVER ARRIVE NORMALLY
     </div>
 
     <div class="clocks">
@@ -554,20 +556,23 @@ for(let i=0;i<45;i++){
 
         You called me creative right?<br><br>
 
-        So this page is only a small preview
-        of what being loved by me would feel like.<br><br>
+        So this page is just a small preview<br>
+        of how being with me would feel.<br><br>
 
-        Quiet nights.<br>
-        Deep talks.<br>
-        Music playing softly.<br>
-        Someone choosing you everyday 🌙
+        Not loud.<br>
+        Not forced.<br>
+        Just calm nights, deep talks,<br>
+        music playing softly,<br>
+        and someone choosing you everyday.<br><br>
+
+        Maybe this isn't a coincidence anymore.
 
     </div>
 
     <div class="forever">
 
-        Sundays still hide something special though 🖤<br>
-        Come back between <b>3AM — 6AM Vancouver Time</b>.
+        Sundays still hide something special though 🌙<br>
+        Come back between <b>3AM and 6AM IST</b>.
 
     </div>
 
@@ -657,27 +662,16 @@ function toggleMusic(btn){
     playing = !playing;
 }
 
-// CLOCKS + SUNDAY MODE
+// CLOCKS
 
 function updateClocks(){
 
     const now = new Date();
 
-    // INDIA TIME
-
     const india = new Date(
         now.toLocaleString(
             "en-US",
             {timeZone:"Asia/Kolkata"}
-        )
-    );
-
-    // CANADA TIME
-
-    const canada = new Date(
-        now.toLocaleString(
-            "en-US",
-            {timeZone:"America/Vancouver"}
         )
     );
 
@@ -693,9 +687,10 @@ function updateClocks(){
     );
 
     const canadaTime =
-    canada.toLocaleTimeString(
+    now.toLocaleTimeString(
         "en-CA",
         {
+            timeZone:"America/Vancouver",
             hour:"2-digit",
             minute:"2-digit",
             second:"2-digit",
@@ -708,85 +703,29 @@ function updateClocks(){
 
     document.getElementById("canadaTime").innerHTML =
     "🇨🇦 Canada: " + canadaTime;
-
-    // VANCOUVER SUNDAY CHECK
-
-    const day = canada.getDay();
-
-    const hour = canada.getHours();
-
-    const sundayMode =
-    day === 0 && hour >= 3 && hour < 6;
-
-    const topText =
-    document.getElementById("topText");
-
-    const status =
-    document.getElementById("status");
-
-    const heart =
-    document.querySelector(".heartBtn");
-
-    const container =
-    document.querySelector(".container");
-
-    if(sundayMode){
-
-        topText.innerHTML =
-        "Sunday finally arrived, Eemanjot 🖤";
-
-        status.innerHTML =
-        "🌙 Darshmehar is awake somewhere across the world.";
-
-        container.style.boxShadow =
-        "0 0 80px rgba(255,255,255,0.14)";
-
-        heart.style.boxShadow =
-        "0 0 45px rgba(255,255,255,0.22)";
-
-        document.body.style.background =
-        "radial-gradient(circle at top,#2a2a2a,#080808 45%,#000000)";
-
-    } else {
-
-        topText.innerHTML =
-        "some people feel like destiny at 3AM 🌙";
-
-        status.innerHTML =
-        "🖤 Darshmehar still thinks Eemanjot sounds beautiful beside his name.";
-
-        container.style.boxShadow =
-        "0 0 50px rgba(255,255,255,0.05)";
-
-        heart.style.boxShadow =
-        "0 0 25px rgba(255,255,255,0.08)";
-
-        document.body.style.background =
-        "radial-gradient(circle at top,#1b1b1b,#090909 45%,#000000)";
-    }
 }
 
 setInterval(updateClocks,1000);
 
 updateClocks();
 
-// POPUP
+// SECRET MESSAGE
 
 function openSecret(){
 
-    const canada = new Date(
+    const india = new Date(
         new Date().toLocaleString(
             "en-US",
-            {timeZone:"America/Vancouver"}
+            {timeZone:"Asia/Kolkata"}
         )
     );
 
-    const day = canada.getDay();
+    const day = india.getDay();
 
-    const hour = canada.getHours();
+    const hour = india.getHours();
 
     const sundayMode =
-    day === 0 && hour >= 3 && hour < 6;
+    day === 0 && hour >=3 && hour <6;
 
     const popup =
     document.getElementById("popup");
@@ -802,38 +741,28 @@ function openSecret(){
 
         `Heyyy love 🖤<br><br>
 
-        You called me creative right...<br>
-        so this is only a small preview of me.<br><br>
+        This hidden part only opens on Sunday nights.<br><br>
 
-        Imagine what it would feel like
-        actually being loved by me 🌙<br><br>
-
-        Quiet nights.<br>
-        Random deep talks.<br>
-        Music softly playing.<br>
-        Me choosing you everyday.<br><br>
-
-        Told you already...<br>
+        Told you...<br>
         if you don't have someone,<br>
         you have me.<br><br>
 
+        And honestly?<br>
         <b>Darshmehar Singh</b><br>
         beside<br>
         <b>Eemanjot Kaur</b><br>
-        sounds dangerously beautiful 🖤<br><br>
+        sounds dangerously beautiful 🌙<br><br>
 
         After tonight...<br>
-        I'll quietly wait for some red sign on your IG Story ❤️`;
+        I'll quietly look for some red sign on your IG ❤️`;
 
     } else {
 
         msg.innerHTML =
 
-        `This hidden part only opens<br>
-        on Sunday between<br><br>
-
-        <b>3AM — 6AM</b><br>
-        Vancouver, Canada Time 🌙🖤`;
+        `The real message only appears<br>
+        on Sunday between<br>
+        <b>3AM and 6AM IST</b> 🌙🖤`;
     }
 }
 
