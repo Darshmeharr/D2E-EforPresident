@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>No Contact From D to E</title>
+<title>Darshmehar × Eemanjot</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
@@ -25,7 +25,10 @@ html,body{
 body{
 
     background:
-    radial-gradient(circle at top,#141414,#050505 60%,#000000);
+    radial-gradient(circle at top,
+    #1b1b1b,
+    #090909 45%,
+    #000000);
 
     color:white;
 
@@ -51,24 +54,22 @@ body::before{
     inset:0;
 
     background:
-    radial-gradient(circle at center,
-    rgba(255,255,255,0.05),
-    transparent 55%);
-
-    pointer-events:none;
+    radial-gradient(circle,
+    rgba(255,255,255,0.04),
+    transparent 60%);
 
     z-index:0;
+
+    pointer-events:none;
 }
 
-/* FALLING ELEMENTS */
+/* STARS */
 
-.falling{
+.star{
 
     position:fixed;
 
-    top:-10vh;
-
-    color:rgba(255,255,255,0.15);
+    color:rgba(255,255,255,0.12);
 
     animation:fall linear infinite;
 
@@ -88,9 +89,9 @@ body::before{
     }
 }
 
-/* TOP FLOATING TEXT */
+/* TOP TEXT */
 
-#floatText{
+#topText{
 
     position:fixed;
 
@@ -106,11 +107,11 @@ body::before{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:18px;
+    font-size:20px;
 
-    color:#d6d6d6;
+    color:#d8d8d8;
 
-    z-index:5;
+    z-index:10;
 
     animation:float 3s ease-in-out infinite;
 }
@@ -118,15 +119,15 @@ body::before{
 @keyframes float{
 
     0%{
-        transform:translateX(-50%) translateY(0);
+        transform:translateX(-50%) translateY(0px);
     }
 
     50%{
-        transform:translateX(-50%) translateY(-4px);
+        transform:translateX(-50%) translateY(-5px);
     }
 
     100%{
-        transform:translateX(-50%) translateY(0);
+        transform:translateX(-50%) translateY(0px);
     }
 }
 
@@ -135,77 +136,89 @@ body::before{
 .container{
 
     width:100%;
-    max-width:950px;
+    max-width:980px;
 
-    padding:45px 35px;
+    padding:50px 35px;
 
-    border-radius:32px;
+    border-radius:35px;
 
     background:rgba(255,255,255,0.04);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(15px);
 
     border:1px solid rgba(255,255,255,0.08);
 
     box-shadow:
-    0 0 45px rgba(255,255,255,0.05);
-
-    text-align:center;
+    0 0 50px rgba(255,255,255,0.05);
 
     position:relative;
 
     z-index:2;
+
+    text-align:center;
+
+    overflow:hidden;
 }
 
-/* TITLES */
+/* SMALL GLOW */
 
-.space-title{
+.container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,0.08),
+    transparent 70%);
+
+    top:-120px;
+    right:-100px;
+
+    border-radius:50%;
+}
+
+/* TITLE */
+
+.love{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:62px;
+    font-size:72px;
+
+    line-height:1.1;
 
     margin-bottom:10px;
 
-    opacity:.95;
+    color:#ffffff;
 }
 
-h1{
+.names{
 
-    font-size:54px;
+    font-size:28px;
 
     letter-spacing:3px;
 
-    margin-bottom:20px;
+    margin-bottom:28px;
 
-    color:#f4f4f4;
+    color:#e8e8e8;
 }
 
-/* LIVE STATUS */
-
-.liveDot{
-
-    width:12px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:#666;
-
-    display:inline-block;
-
-    margin-right:8px;
-}
+/* STATUS */
 
 .status{
-
-    margin-top:15px;
 
     margin-bottom:25px;
 
     font-size:18px;
 
-    font-weight:bold;
+    color:#f3f3f3;
+
+    line-height:1.8;
 }
 
 /* CLOCKS */
@@ -216,68 +229,76 @@ h1{
 
     justify-content:center;
 
-    gap:30px;
+    gap:35px;
 
     flex-wrap:wrap;
 
-    margin-bottom:25px;
+    margin-bottom:30px;
 
-    color:#d7d7d7;
+    color:#d4d4d4;
+
+    font-size:15px;
 }
 
-/* MESSAGE */
+/* MAIN TEXT */
 
 .message{
 
-    font-size:18px;
+    font-size:19px;
 
-    line-height:1.9;
+    line-height:2;
 
-    color:#dddddd;
+    color:#dcdcdc;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
-.quote{
+/* FOREVER SECTION */
 
-    font-style:italic;
-
-    color:#f0f0f0;
+.forever{
 
     margin-top:10px;
 
     margin-bottom:30px;
+
+    font-size:16px;
+
+    color:#bcbcbc;
+
+    line-height:1.9;
 }
 
-/* HEART BUTTON */
+/* BUTTON */
 
-.heart{
+.heartBtn{
 
-    width:95px;
-    height:95px;
+    width:100px;
+    height:100px;
 
     border-radius:50%;
 
     border:none;
 
     background:
-    radial-gradient(circle,#1a1a1a,#090909);
+    radial-gradient(circle,
+    #1a1a1a,
+    #080808);
 
     color:white;
 
-    font-size:40px;
+    font-size:42px;
 
     cursor:pointer;
 
     transition:.4s;
 
     box-shadow:
-    0 0 20px rgba(255,255,255,0.08);
+    0 0 25px rgba(255,255,255,0.08);
 
-    animation:pulse 2.2s infinite;
+    animation:pulse 2.5s infinite;
 }
 
-.heart:hover{
+.heartBtn:hover{
 
     transform:scale(1.08);
 }
@@ -285,59 +306,59 @@ h1{
 @keyframes pulse{
 
     0%{
-        box-shadow:0 0 0 rgba(255,255,255,0.2);
+        box-shadow:0 0 10px rgba(255,255,255,0.04);
     }
 
     50%{
-        box-shadow:0 0 30px rgba(255,255,255,0.12);
+        box-shadow:0 0 35px rgba(255,255,255,0.12);
     }
 
     100%{
-        box-shadow:0 0 0 rgba(255,255,255,0.2);
+        box-shadow:0 0 10px rgba(255,255,255,0.04);
     }
 }
 
 /* MUSIC BUTTON */
 
-.music-btn{
+.musicBtn{
 
     margin-top:25px;
 
-    padding:14px 28px;
+    padding:14px 30px;
 
     border-radius:40px;
 
-    border:1px solid rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.08);
 
     background:#111;
 
     color:white;
 
-    cursor:pointer;
-
     font-size:16px;
+
+    cursor:pointer;
 
     transition:.3s;
 }
 
-.music-btn:hover{
+.musicBtn:hover{
 
     transform:scale(1.05);
 
-    background:#1d1d1d;
+    background:#1a1a1a;
 }
 
-/* SECRET NOTE */
+/* SECRET */
 
 .secret{
 
-    margin-top:28px;
+    margin-top:30px;
 
     font-size:14px;
 
-    color:#a7a7a7;
+    color:#8f8f8f;
 
-    letter-spacing:1px;
+    letter-spacing:2px;
 }
 
 /* POPUP */
@@ -354,7 +375,7 @@ h1{
 
     align-items:center;
 
-    background:rgba(0,0,0,0.9);
+    background:rgba(0,0,0,.92);
 
     z-index:9999;
 
@@ -364,29 +385,31 @@ h1{
 .popupContent{
 
     width:100%;
-    max-width:560px;
+    max-width:620px;
 
-    padding:35px;
+    padding:40px 28px;
 
-    border-radius:30px;
+    border-radius:32px;
 
     background:
-    linear-gradient(180deg,#111,#080808);
+    linear-gradient(180deg,
+    #111111,
+    #060606);
 
     border:1px solid rgba(255,255,255,0.08);
 
     text-align:center;
 
-    line-height:1.9;
+    line-height:2;
 }
 
 .popupContent h2{
 
-    margin-bottom:18px;
-
     font-family:'Great Vibes',cursive;
 
-    font-size:38px;
+    font-size:42px;
+
+    margin-bottom:15px;
 }
 
 .closeBtn{
@@ -395,7 +418,7 @@ h1{
 
     cursor:pointer;
 
-    color:#d5d5d5;
+    color:#d4d4d4;
 }
 
 /* MOBILE */
@@ -404,17 +427,17 @@ h1{
 
     .container{
 
-        padding:28px 18px;
+        padding:35px 20px;
     }
 
-    .space-title{
+    .love{
 
-        font-size:40px;
+        font-size:46px;
     }
 
-    h1{
+    .names{
 
-        font-size:30px;
+        font-size:18px;
 
         letter-spacing:1px;
     }
@@ -422,22 +445,24 @@ h1{
     .message{
 
         font-size:15px;
+
+        line-height:1.9;
     }
 
-    .quote{
+    .forever{
 
         font-size:14px;
     }
 
-    .heart{
+    .heartBtn{
 
-        width:80px;
-        height:80px;
+        width:82px;
+        height:82px;
 
         font-size:32px;
     }
 
-    .music-btn{
+    .musicBtn{
 
         width:100%;
     }
@@ -447,18 +472,16 @@ h1{
         flex-direction:column;
 
         gap:10px;
-
-        font-size:14px;
     }
 
-    #floatText{
+    #topText{
 
-        font-size:14px;
+        font-size:15px;
     }
 
     .popupContent{
 
-        padding:25px 18px;
+        padding:28px 18px;
     }
 }
 
@@ -467,32 +490,33 @@ h1{
 
 <body>
 
-<div id="floatText">
-    Active only on Sundays • 3AM to 6AM IST 🌙
+<div id="topText">
+    some people feel like destiny at 3AM 🌙
 </div>
 
-<!-- FALLING EFFECT -->
+<!-- FALLING SYMBOLS -->
 
 <script>
 
-const symbols = ["🖤","☾","✦","🌑","❖","🕊"];
+const symbols = ["🖤","☾","✦","🌑","❖","♡"];
 
-for(let i=0;i<40;i++){
+for(let i=0;i<45;i++){
 
     const el = document.createElement("div");
 
-    el.className = "falling";
+    el.className = "star";
 
     el.innerHTML =
     symbols[Math.floor(Math.random()*symbols.length)];
 
-    el.style.left = Math.random()*100 + "vw";
+    el.style.left =
+    Math.random()*100 + "vw";
 
     el.style.animationDuration =
-    (6 + Math.random()*7) + "s";
+    (7 + Math.random()*8) + "s";
 
     el.style.fontSize =
-    (16 + Math.random()*24) + "px";
+    (14 + Math.random()*24) + "px";
 
     document.body.appendChild(el);
 }
@@ -501,11 +525,13 @@ for(let i=0;i<40;i++){
 
 <div class="container">
 
-    <div class="space-title">
-        Having No Contact From D to E
+    <div class="love">
+        Darshmehar × Eemanjot
     </div>
 
-    <h1>EEMANJOT KAUR</h1>
+    <div class="names">
+        SOME CONNECTIONS NEVER ARRIVE NORMALLY
+    </div>
 
     <div class="clocks">
 
@@ -519,43 +545,55 @@ for(let i=0;i<40;i++){
 
     </div>
 
-    <div class="status" id="statusText">
+    <div class="status" id="status">
 
-        <span class="liveDot" id="liveDot"></span>
-
-        Checking activity...
+        🖤 Darshmehar still thinks
+        Eemanjot sounds beautiful beside his name.
 
     </div>
 
     <div class="message">
 
-        Some people arrive softly,<br>
-        but stay inside your mind loudly.<br><br>
+        You called me creative right?<br><br>
 
-        Sundays became memories.<br>
-        3AM became a feeling.<br><br>
+        So this page is just a small preview<br>
+        of how being with me would feel.<br><br>
 
-        Maybe distance isn't silence.<br>
-        Maybe it's just timing.
+        Not loud.<br>
+        Not forced.<br>
+        Just calm nights, deep talks,<br>
+        music playing softly,<br>
+        and someone choosing you everyday.<br><br>
+
+        Maybe this isn't a coincidence anymore.
 
     </div>
 
-    <div class="quote">
-        "ਹੁਕਮਿ ਰਜਾਈ ਚਲਣਾ ਨਾਨਕ ਲਿਖਿਆ ਨਾਲਿ"
+    <div class="forever">
+
+        Sundays still hide something special though 🌙<br>
+        Come back between <b>3AM and 6AM IST</b>.
+
     </div>
 
-    <button class="heart" onclick="openMessage()">
+    <button class="heartBtn"
+    onclick="openSecret()">
+
         🖤
+
     </button>
 
     <br>
 
-    <button class="music-btn" onclick="toggleMusic(this)">
+    <button class="musicBtn"
+    onclick="toggleMusic(this)">
+
         ▶ Play Music
+
     </button>
 
     <div class="secret">
-        maybe some stories are written at night...
+        made quietly for one person only
     </div>
 
 </div>
@@ -566,7 +604,7 @@ for(let i=0;i<40;i++){
 
     <div class="popupContent">
 
-        <h2>For You 🌙</h2>
+        <h2>For Eemanjot 🌙</h2>
 
         <div id="popupMessage"></div>
 
@@ -591,16 +629,16 @@ for(let i=0;i<40;i++){
 
 // MUSIC
 
-const bgMusic =
+const music =
 document.getElementById("bgMusic");
 
 let playing = false;
 
 document.body.addEventListener("click",()=>{
 
-    bgMusic.volume = 0.45;
+    music.volume = 0.45;
 
-    bgMusic.play().catch(()=>{});
+    music.play().catch(()=>{});
 
 },{once:true});
 
@@ -608,14 +646,14 @@ function toggleMusic(btn){
 
     if(playing){
 
-        bgMusic.pause();
+        music.pause();
 
         btn.innerHTML =
         "▶ Play Music";
 
     } else {
 
-        bgMusic.play();
+        music.play();
 
         btn.innerHTML =
         "⏸ Pause Music";
@@ -624,7 +662,7 @@ function toggleMusic(btn){
     playing = !playing;
 }
 
-// CLOCKS + STATUS
+// CLOCKS
 
 function updateClocks(){
 
@@ -665,51 +703,15 @@ function updateClocks(){
 
     document.getElementById("canadaTime").innerHTML =
     "🇨🇦 Canada: " + canadaTime;
-
-    const day = india.getDay();
-
-    const hour = india.getHours();
-
-    const active =
-    day === 0 && hour >=3 && hour <6;
-
-    const status =
-    document.getElementById("statusText");
-
-    const dot =
-    document.getElementById("liveDot");
-
-    if(active){
-
-        status.innerHTML =
-        `<span class="liveDot"
-        style="background:#00ff99;
-        box-shadow:0 0 15px #00ff99;"></span>
-
-        🟢 Currently Active`;
-
-        document.getElementById("floatText").innerHTML =
-        "Sunday • 3AM - 6AM IST • Updating Daily 🌙";
-
-    } else {
-
-        status.innerHTML =
-        `<span class="liveDot"></span>
-
-        ⚫ Offline Until Sunday 3AM IST`;
-
-        document.getElementById("floatText").innerHTML =
-        "Active only on Sundays • 3AM to 6AM IST 🌙";
-    }
 }
 
 setInterval(updateClocks,1000);
 
 updateClocks();
 
-// POPUP MESSAGE
+// SECRET MESSAGE
 
-function openMessage(){
+function openSecret(){
 
     const india = new Date(
         new Date().toLocaleString(
@@ -722,7 +724,7 @@ function openMessage(){
 
     const hour = india.getHours();
 
-    const active =
+    const sundayMode =
     day === 0 && hour >=3 && hour <6;
 
     const popup =
@@ -733,37 +735,34 @@ function openMessage(){
 
     popup.style.display = "flex";
 
-    if(active){
+    if(sundayMode){
 
         msg.innerHTML =
 
         `Heyyy love 🖤<br><br>
 
-        This page is designed for you.<br><br>
+        This hidden part only opens on Sunday nights.<br><br>
 
-        You called me creative right…<br>
-        so here’s just a small taste of being with me.<br><br>
-
-        More you'll see when you'll actually be with me 🌙<br><br>
-
-        Told you… if you don't have someone,<br>
+        Told you...<br>
+        if you don't have someone,<br>
         you have me.<br><br>
 
-        Don't you think<br>
-        <b>Eemanjot Kaur</b> looks good with<br>
-        <b>Darshmehar Singh</b>? 🖤<br><br>
+        And honestly?<br>
+        <b>Darshmehar Singh</b><br>
+        beside<br>
+        <b>Eemanjot Kaur</b><br>
+        sounds dangerously beautiful 🌙<br><br>
 
-        After Sunday…<br>
-        I'll look for some red sign on your IG Story ❤️`;
+        After tonight...<br>
+        I'll quietly look for some red sign on your IG ❤️`;
 
     } else {
 
         msg.innerHTML =
 
-        `Currently offline 🌑<br><br>
-
-        Come back Sunday between
-        <b>3AM and 6AM IST</b> 🖤`;
+        `The real message only appears<br>
+        on Sunday between<br>
+        <b>3AM and 6AM IST</b> 🌙🖤`;
     }
 }
 
