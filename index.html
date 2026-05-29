@@ -1,677 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Darshmehar × Eemanjot</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-    overflow-x:hidden;
-}
-
-body{
-
-    background:
-    radial-gradient(circle at top,
-    #1b1b1b,
-    #090909 45%,
-    #000000);
-
-    color:white;
-
-    font-family:'Playfair Display',serif;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    position:relative;
-}
-
-/* BACKGROUND GLOW */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-    radial-gradient(circle,
-    rgba(255,255,255,0.04),
-    transparent 60%);
-
-    z-index:0;
-
-    pointer-events:none;
-}
-
-/* STARS */
-
-.star{
-
-    position:fixed;
-
-    color:rgba(255,255,255,0.12);
-
-    animation:fall linear infinite;
-
-    z-index:1;
-
-    pointer-events:none;
-}
-
-@keyframes fall{
-
-    from{
-        transform:translateY(-10vh) rotate(0deg);
-    }
-
-    to{
-        transform:translateY(120vh) rotate(360deg);
-    }
-}
-
-/* TOP TEXT */
-
-#topText{
-
-    position:fixed;
-
-    top:12px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:92%;
-
-    text-align:center;
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:20px;
-
-    color:#d8d8d8;
-
-    z-index:10;
-
-    animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-
-    0%{
-        transform:translateX(-50%) translateY(0px);
-    }
-
-    50%{
-        transform:translateX(-50%) translateY(-5px);
-    }
-
-    100%{
-        transform:translateX(-50%) translateY(0px);
-    }
-}
-
-/* MAIN CARD */
-
-.container{
-
-    width:100%;
-    max-width:980px;
-
-    padding:50px 35px;
-
-    border-radius:35px;
-
-    background:rgba(255,255,255,0.04);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    box-shadow:
-    0 0 50px rgba(255,255,255,0.05);
-
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-
-    overflow:hidden;
-}
-
-/* SMALL GLOW */
-
-.container::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    background:
-    radial-gradient(circle,
-    rgba(255,255,255,0.08),
-    transparent 70%);
-
-    top:-120px;
-    right:-100px;
-
-    border-radius:50%;
-}
-
-/* TITLE */
-
-.love{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:72px;
-
-    line-height:1.1;
-
-    margin-bottom:10px;
-
-    color:#ffffff;
-}
-
-.names{
-
-    font-size:28px;
-
-    letter-spacing:3px;
-
-    margin-bottom:28px;
-
-    color:#e8e8e8;
-}
-
-/* STATUS */
-
-.status{
-
-    margin-bottom:25px;
-
-    font-size:18px;
-
-    color:#f3f3f3;
-
-    line-height:1.8;
-}
-
-/* CLOCKS */
-
-.clocks{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:35px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:30px;
-
-    color:#d4d4d4;
-
-    font-size:15px;
-}
-
-/* MAIN TEXT */
-
-.message{
-
-    font-size:19px;
-
-    line-height:2;
-
-    color:#dcdcdc;
-
-    margin-bottom:28px;
-}
-
-/* FOREVER SECTION */
-
-.forever{
-
-    margin-top:10px;
-
-    margin-bottom:30px;
-
-    font-size:16px;
-
-    color:#bcbcbc;
-
-    line-height:1.9;
-}
-
-/* BUTTON */
-
-.heartBtn{
-
-    width:100px;
-    height:100px;
-
-    border-radius:50%;
-
-    border:none;
-
-    background:
-    radial-gradient(circle,
-    #1a1a1a,
-    #080808);
-
-    color:white;
-
-    font-size:42px;
-
-    cursor:pointer;
-
-    transition:.4s;
-
-    box-shadow:
-    0 0 25px rgba(255,255,255,0.08);
-
-    animation:pulse 2.5s infinite;
-}
-
-.heartBtn:hover{
-
-    transform:scale(1.08);
-}
-
-@keyframes pulse{
-
-    0%{
-        box-shadow:0 0 10px rgba(255,255,255,0.04);
-    }
-
-    50%{
-        box-shadow:0 0 35px rgba(255,255,255,0.12);
-    }
-
-    100%{
-        box-shadow:0 0 10px rgba(255,255,255,0.04);
-    }
-}
-
-/* MUSIC BUTTON */
-
-.musicBtn{
-
-    margin-top:25px;
-
-    padding:14px 30px;
-
-    border-radius:40px;
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    background:#111;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.musicBtn:hover{
-
-    transform:scale(1.05);
-
-    background:#1a1a1a;
-}
-
-/* SECRET */
-
-.secret{
-
-    margin-top:30px;
-
-    font-size:14px;
-
-    color:#8f8f8f;
-
-    letter-spacing:2px;
-}
-
-/* POPUP */
-
-.popup{
-
-    position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.92);
-
-    z-index:9999;
-
-    padding:20px;
-}
-
-.popupContent{
-
-    width:100%;
-    max-width:620px;
-
-    padding:40px 28px;
-
-    border-radius:32px;
-
-    background:
-    linear-gradient(180deg,
-    #111111,
-    #060606);
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    text-align:center;
-
-    line-height:2;
-}
-
-.popupContent h2{
-
-    font-family:'Great Vibes',cursive;
-
-    font-size:42px;
-
-    margin-bottom:15px;
-}
-
-.closeBtn{
-
-    margin-top:25px;
-
-    cursor:pointer;
-
-    color:#d4d4d4;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .container{
-
-        padding:35px 20px;
-    }
-
-    .love{
-
-        font-size:46px;
-    }
-
-    .names{
-
-        font-size:18px;
-
-        letter-spacing:1px;
-    }
-
-    .message{
-
-        font-size:15px;
-
-        line-height:1.9;
-    }
-
-    .forever{
-
-        font-size:14px;
-    }
-
-    .heartBtn{
-
-        width:82px;
-        height:82px;
-
-        font-size:32px;
-    }
-
-    .musicBtn{
-
-        width:100%;
-    }
-
-    .clocks{
-
-        flex-direction:column;
-
-        gap:10px;
-    }
-
-    #topText{
-
-        font-size:15px;
-    }
-
-    .popupContent{
-
-        padding:28px 18px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<div id="topText">
-    some people feel like destiny at 3AM 🌙
-</div>
-
-<!-- FALLING SYMBOLS -->
-
-<script>
-
-const symbols = ["🖤","☾","✦","🌑","❖","♡"];
-
-for(let i=0;i<45;i++){
-
-    const el = document.createElement("div");
-
-    el.className = "star";
-
-    el.innerHTML =
-    symbols[Math.floor(Math.random()*symbols.length)];
-
-    el.style.left =
-    Math.random()*100 + "vw";
-
-    el.style.animationDuration =
-    (7 + Math.random()*8) + "s";
-
-    el.style.fontSize =
-    (14 + Math.random()*24) + "px";
-
-    document.body.appendChild(el);
-}
-
-</script>
-
-<div class="container">
-
-    <div class="love">
-        Darshmehar × Eemanjot
-    </div>
-
-    <div class="names">
-        SOME CONNECTIONS NEVER ARRIVE NORMALLY
-    </div>
-
-    <div class="clocks">
-
-        <div id="indiaTime">
-            🇮🇳 India: --
-        </div>
-
-        <div id="canadaTime">
-            🇨🇦 Canada: --
-        </div>
-
-    </div>
-
-    <div class="status" id="status">
-
-        🖤 Darshmehar still thinks
-        Eemanjot sounds beautiful beside his name.
-
-    </div>
-
-    <div class="message">
-
-        You called me creative right?<br><br>
-
-        So this page is just a small preview<br>
-        of how being with me would feel.<br><br>
-
-        Not loud.<br>
-        Not forced.<br>
-        Just calm nights, deep talks,<br>
-        music playing softly,<br>
-        and someone choosing you everyday.<br><br>
-
-        Maybe this isn't a coincidence anymore.
-
-    </div>
-
-    <div class="forever">
-
-        Sundays still hide something special though 🌙<br>
-        Come back between <b>3AM and 6AM IST</b>.
-
-    </div>
-
-    <button class="heartBtn"
-    onclick="openSecret()">
-
-        🖤
-
-    </button>
-
-    <br>
-
-    <button class="musicBtn"
-    onclick="toggleMusic(this)">
-
-        ▶ Play Music
-
-    </button>
-
-    <div class="secret">
-        made quietly for one person only
-    </div>
-
-</div>
-
-<!-- POPUP -->
-
-<div class="popup" id="popup">
-
-    <div class="popupContent">
-
-        <h2>For Eemanjot 🌙</h2>
-
-        <div id="popupMessage"></div>
-
-        <div class="closeBtn"
-        onclick="closePopup()">
-
-            Close
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-    <source src="excuses.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-// MUSIC
-
-const music =
-document.getElementById("bgMusic");
-
-let playing = false;
-
-document.body.addEventListener("click",()=>{
-
-    music.volume = 0.45;
-
-    music.play().catch(()=>{});
-
-},{once:true});
-
-function toggleMusic(btn){
-
-    if(playing){
-
-        music.pause();
-
-        btn.innerHTML =
-        "▶ Play Music";
-
-    } else {
-
-        music.play();
-
-        btn.innerHTML =
-        "⏸ Pause Music";
-    }
-
-    playing = !playing;
-}
-
-// CLOCKS
-
 function updateClocks(){
 
     const now = new Date();
+
+    // INDIA CLOCK
 
     const india = new Date(
         now.toLocaleString(
             "en-US",
             {timeZone:"Asia/Kolkata"}
+        )
+    );
+
+    // CANADA CLOCK
+
+    const canada = new Date(
+        now.toLocaleString(
+            "en-US",
+            {timeZone:"America/Vancouver"}
         )
     );
 
@@ -687,10 +32,9 @@ function updateClocks(){
     );
 
     const canadaTime =
-    now.toLocaleTimeString(
+    canada.toLocaleTimeString(
         "en-CA",
         {
-            timeZone:"America/Vancouver",
             hour:"2-digit",
             minute:"2-digit",
             second:"2-digit",
@@ -703,26 +47,99 @@ function updateClocks(){
 
     document.getElementById("canadaTime").innerHTML =
     "🇨🇦 Canada: " + canadaTime;
+
+
+    // CANADA SUNDAY CHECK
+
+    const day = canada.getDay();
+
+    const hour = canada.getHours();
+
+    const sundayMode =
+    day === 0 && hour >=3 && hour <6;
+
+    const topText =
+    document.getElementById("topText");
+
+    const status =
+    document.getElementById("status");
+
+    const heart =
+    document.querySelector(".heartBtn");
+
+    const container =
+    document.querySelector(".container");
+
+
+    if(sundayMode){
+
+        // TOP TEXT
+
+        topText.innerHTML =
+        "Sunday finally arrived, Eemanjot 🖤";
+
+        // STATUS
+
+        status.innerHTML =
+
+        `🌙 Darshmehar is finally awake 
+        somewhere across the world.`;
+
+        // EXTRA GLOW
+
+        container.style.boxShadow =
+        "0 0 70px rgba(255,255,255,0.12)";
+
+        // HEART GLOW
+
+        heart.style.boxShadow =
+        "0 0 40px rgba(255,255,255,0.25)";
+
+        // BACKGROUND EFFECT
+
+        document.body.style.background =
+        "radial-gradient(circle at top,#2a2a2a,#080808 45%,#000000)";
+
+    } else {
+
+        topText.innerHTML =
+        "some people feel like destiny at 3AM 🌙";
+
+        status.innerHTML =
+
+        `🖤 Darshmehar still thinks
+        Eemanjot sounds beautiful beside his name.`;
+
+        container.style.boxShadow =
+        "0 0 50px rgba(255,255,255,0.05)";
+
+        heart.style.boxShadow =
+        "0 0 25px rgba(255,255,255,0.08)";
+
+        document.body.style.background =
+        "radial-gradient(circle at top,#1b1b1b,#090909 45%,#000000)";
+    }
 }
 
 setInterval(updateClocks,1000);
 
 updateClocks();
 
-// SECRET MESSAGE
+
+// SECRET POPUP
 
 function openSecret(){
 
-    const india = new Date(
+    const canada = new Date(
         new Date().toLocaleString(
             "en-US",
-            {timeZone:"Asia/Kolkata"}
+            {timeZone:"America/Vancouver"}
         )
     );
 
-    const day = india.getDay();
+    const day = canada.getDay();
 
-    const hour = india.getHours();
+    const hour = canada.getHours();
 
     const sundayMode =
     day === 0 && hour >=3 && hour <6;
@@ -741,38 +158,39 @@ function openSecret(){
 
         `Heyyy love 🖤<br><br>
 
-        This hidden part only opens on Sunday nights.<br><br>
+        You called me creative right...<br>
+        so this is only a small preview of me.<br><br>
 
-        Told you...<br>
+        Imagine what it would feel like
+        actually being loved by me 🌙<br><br>
+
+        Quiet nights.<br>
+        Random deep talks.<br>
+        Music playing softly.<br>
+        Me choosing you everyday.<br><br>
+
+        Told you already...<br>
         if you don't have someone,<br>
         you have me.<br><br>
 
-        And honestly?<br>
+        And honestly?<br><br>
+
         <b>Darshmehar Singh</b><br>
         beside<br>
         <b>Eemanjot Kaur</b><br>
-        sounds dangerously beautiful 🌙<br><br>
+        sounds dangerously beautiful 🖤<br><br>
 
         After tonight...<br>
-        I'll quietly look for some red sign on your IG ❤️`;
+        I'll quietly wait for some red sign on your IG story ❤️`;
 
     } else {
 
         msg.innerHTML =
 
-        `The real message only appears<br>
-        on Sunday between<br>
-        <b>3AM and 6AM IST</b> 🌙🖤`;
+        `This hidden part only opens<br>
+        on Sunday between<br><br>
+
+        <b>3AM — 6AM</b><br>
+        Vancouver, Canada Time 🌙🖤`;
     }
 }
-
-function closePopup(){
-
-    document.getElementById("popup")
-    .style.display = "none";
-}
-
-</script>
-
-</body>
-</html>
