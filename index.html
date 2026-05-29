@@ -1,8 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Darshmehar × Eemanjot</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at top,
+    #1b1b1b,
+    #090909 45%,
+    #000000);
+
+    color:white;
+
+    font-family:'Playfair Display',serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    position:relative;
+
+    transition:1s ease;
+}
+
+/* GLOW */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,0.04),
+    transparent 60%);
+
+    z-index:0;
+
+    pointer-events:none;
+}
+
+/* FLOATING SYMBOLS */
+
+.star{
+
+    position:fixed;
+
+    top:-10vh;
+
+    color:rgba(255,255,255,0.12);
+
+    animation:fall linear infinite;
+
+    z-index:1;
+
+    pointer-events:none;
+}
+
+@keyframes fall{
+
+    from{
+        transform:translateY(-10vh) rotate(0deg);
+    }
+
+    to{
+        transform:translateY(120vh) rotate(360deg);
+    }
+}
+
+/* TOP TEXT */
+
+#topText{
+
+    position:fixed;
+
+    top:12px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:92%;
+
+    text-align:center;
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:20px;
+
+    color:#d8d8d8;
+
+    z-index:10;
+
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateX(-50%) translateY(0px);
+    }
+
+    50%{
+        transform:translateX(-50%) translateY(-5px);
+    }
+
+    100%{
+        transform:translateX(-50%) translateY(0px);
+    }
+}
+
+/* CARD */
+
+.container{
+
+    width:100%;
+    max-width:980px;
+
+    padding:50px 35px;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 0 50px rgba(255,255,255,0.05);
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    transition:.8s ease;
+}
+
+/* LIGHT EFFECT */
+
+.container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,0.08),
+    transparent 70%);
+
+    top:-120px;
+    right:-100px;
+
+    border-radius:50%;
+}
+
+/* TITLES */
+
+.love{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:72px;
+
+    line-height:1.1;
+
+    margin-bottom:10px;
+
+    color:#ffffff;
+}
+
+.names{
+
+    font-size:28px;
+
+    letter-spacing:3px;
+
+    margin-bottom:28px;
+
+    color:#e8e8e8;
+}
+
+/* CLOCKS */
+
+.clocks{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:35px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+
+    color:#d4d4d4;
+
+    font-size:15px;
+}
+
+/* STATUS */
+
+.status{
+
+    margin-bottom:28px;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#efefef;
+}
+
+/* MESSAGE */
+
+.message{
+
+    font-size:19px;
+
+    line-height:2;
+
+    color:#dddddd;
+
+    margin-bottom:30px;
+}
+
+.forever{
+
+    margin-bottom:30px;
+
+    color:#b8b8b8;
+
+    line-height:1.8;
+}
+
+/* HEART BUTTON */
+
+.heartBtn{
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:
+    radial-gradient(circle,
+    #1a1a1a,
+    #080808);
+
+    color:white;
+
+    font-size:42px;
+
+    cursor:pointer;
+
+    transition:.5s;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.08);
+
+    animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.heartBtn:hover{
+
+    transform:scale(1.1);
+}
+
+/* MUSIC BUTTON */
+
+.musicBtn{
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border-radius:40px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:#111;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.musicBtn:hover{
+
+    background:#1b1b1b;
+
+    transform:scale(1.05);
+}
+
+/* SECRET */
+
+.secret{
+
+    margin-top:28px;
+
+    color:#8f8f8f;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+}
+
+/* POPUP */
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.92);
+
+    z-index:9999;
+
+    padding:20px;
+}
+
+.popupContent{
+
+    width:100%;
+    max-width:620px;
+
+    padding:40px 28px;
+
+    border-radius:32px;
+
+    background:
+    linear-gradient(180deg,
+    #111111,
+    #060606);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    text-align:center;
+
+    line-height:2;
+}
+
+.popupContent h2{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:42px;
+
+    margin-bottom:15px;
+}
+
+.closeBtn{
+
+    margin-top:25px;
+
+    cursor:pointer;
+
+    color:#d4d4d4;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .container{
+
+        padding:35px 20px;
+    }
+
+    .love{
+
+        font-size:46px;
+    }
+
+    .names{
+
+        font-size:18px;
+
+        letter-spacing:1px;
+    }
+
+    .message{
+
+        font-size:15px;
+    }
+
+    .forever{
+
+        font-size:14px;
+    }
+
+    .heartBtn{
+
+        width:82px;
+        height:82px;
+
+        font-size:32px;
+    }
+
+    .musicBtn{
+
+        width:100%;
+    }
+
+    .clocks{
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+    #topText{
+
+        font-size:15px;
+    }
+
+    .popupContent{
+
+        padding:28px 18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="topText">
+    some people feel like destiny at 3AM 🌙
+</div>
+
+<!-- FLOATING SYMBOLS -->
+
+<script>
+
+const symbols = ["🖤","☾","✦","🌑","❖","♡"];
+
+for(let i=0;i<45;i++){
+
+    const el = document.createElement("div");
+
+    el.className = "star";
+
+    el.innerHTML =
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left =
+    Math.random()*100 + "vw";
+
+    el.style.animationDuration =
+    (7 + Math.random()*8) + "s";
+
+    el.style.fontSize =
+    (14 + Math.random()*24) + "px";
+
+    document.body.appendChild(el);
+}
+
+</script>
+
+<div class="container">
+
+    <div class="love">
+        Darshmehar × Eemanjot
+    </div>
+
+    <div class="names">
+        SOME CONNECTIONS ARRIVE LIKE DESTINY
+    </div>
+
+    <div class="clocks">
+
+        <div id="indiaTime">
+            🇮🇳 India: --
+        </div>
+
+        <div id="canadaTime">
+            🇨🇦 Canada: --
+        </div>
+
+    </div>
+
+    <div class="status" id="status">
+
+        🖤 Darshmehar still thinks
+        Eemanjot sounds beautiful beside his name.
+
+    </div>
+
+    <div class="message">
+
+        You called me creative right?<br><br>
+
+        So this page is only a small preview
+        of what being loved by me would feel like.<br><br>
+
+        Quiet nights.<br>
+        Deep talks.<br>
+        Music playing softly.<br>
+        Someone choosing you everyday 🌙
+
+    </div>
+
+    <div class="forever">
+
+        Sundays still hide something special though 🖤<br>
+        Come back between <b>3AM — 6AM Vancouver Time</b>.
+
+    </div>
+
+    <button class="heartBtn"
+    onclick="openSecret()">
+
+        🖤
+
+    </button>
+
+    <br>
+
+    <button class="musicBtn"
+    onclick="toggleMusic(this)">
+
+        ▶ Play Music
+
+    </button>
+
+    <div class="secret">
+        made quietly for one person only
+    </div>
+
+</div>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+
+    <div class="popupContent">
+
+        <h2>For Eemanjot 🌙</h2>
+
+        <div id="popupMessage"></div>
+
+        <div class="closeBtn"
+        onclick="closePopup()">
+
+            Close
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+    <source src="excuses.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// MUSIC
+
+const music =
+document.getElementById("bgMusic");
+
+let playing = false;
+
+document.body.addEventListener("click",()=>{
+
+    music.volume = 0.45;
+
+    music.play().catch(()=>{});
+
+},{once:true});
+
+function toggleMusic(btn){
+
+    if(playing){
+
+        music.pause();
+
+        btn.innerHTML =
+        "▶ Play Music";
+
+    } else {
+
+        music.play();
+
+        btn.innerHTML =
+        "⏸ Pause Music";
+    }
+
+    playing = !playing;
+}
+
+// CLOCKS + SUNDAY MODE
+
 function updateClocks(){
 
     const now = new Date();
 
-    // INDIA CLOCK
+    // INDIA TIME
 
     const india = new Date(
         now.toLocaleString(
@@ -11,7 +672,7 @@ function updateClocks(){
         )
     );
 
-    // CANADA CLOCK
+    // CANADA TIME
 
     const canada = new Date(
         now.toLocaleString(
@@ -48,15 +709,14 @@ function updateClocks(){
     document.getElementById("canadaTime").innerHTML =
     "🇨🇦 Canada: " + canadaTime;
 
-
-    // CANADA SUNDAY CHECK
+    // VANCOUVER SUNDAY CHECK
 
     const day = canada.getDay();
 
     const hour = canada.getHours();
 
     const sundayMode =
-    day === 0 && hour >=3 && hour <6;
+    day === 0 && hour >= 3 && hour < 6;
 
     const topText =
     document.getElementById("topText");
@@ -70,32 +730,19 @@ function updateClocks(){
     const container =
     document.querySelector(".container");
 
-
     if(sundayMode){
-
-        // TOP TEXT
 
         topText.innerHTML =
         "Sunday finally arrived, Eemanjot 🖤";
 
-        // STATUS
-
         status.innerHTML =
-
-        `🌙 Darshmehar is finally awake 
-        somewhere across the world.`;
-
-        // EXTRA GLOW
+        "🌙 Darshmehar is awake somewhere across the world.";
 
         container.style.boxShadow =
-        "0 0 70px rgba(255,255,255,0.12)";
-
-        // HEART GLOW
+        "0 0 80px rgba(255,255,255,0.14)";
 
         heart.style.boxShadow =
-        "0 0 40px rgba(255,255,255,0.25)";
-
-        // BACKGROUND EFFECT
+        "0 0 45px rgba(255,255,255,0.22)";
 
         document.body.style.background =
         "radial-gradient(circle at top,#2a2a2a,#080808 45%,#000000)";
@@ -106,9 +753,7 @@ function updateClocks(){
         "some people feel like destiny at 3AM 🌙";
 
         status.innerHTML =
-
-        `🖤 Darshmehar still thinks
-        Eemanjot sounds beautiful beside his name.`;
+        "🖤 Darshmehar still thinks Eemanjot sounds beautiful beside his name.";
 
         container.style.boxShadow =
         "0 0 50px rgba(255,255,255,0.05)";
@@ -125,8 +770,7 @@ setInterval(updateClocks,1000);
 
 updateClocks();
 
-
-// SECRET POPUP
+// POPUP
 
 function openSecret(){
 
@@ -142,7 +786,7 @@ function openSecret(){
     const hour = canada.getHours();
 
     const sundayMode =
-    day === 0 && hour >=3 && hour <6;
+    day === 0 && hour >= 3 && hour < 6;
 
     const popup =
     document.getElementById("popup");
@@ -166,14 +810,12 @@ function openSecret(){
 
         Quiet nights.<br>
         Random deep talks.<br>
-        Music playing softly.<br>
+        Music softly playing.<br>
         Me choosing you everyday.<br><br>
 
         Told you already...<br>
         if you don't have someone,<br>
         you have me.<br><br>
-
-        And honestly?<br><br>
 
         <b>Darshmehar Singh</b><br>
         beside<br>
@@ -181,7 +823,7 @@ function openSecret(){
         sounds dangerously beautiful 🖤<br><br>
 
         After tonight...<br>
-        I'll quietly wait for some red sign on your IG story ❤️`;
+        I'll quietly wait for some red sign on your IG Story ❤️`;
 
     } else {
 
@@ -194,3 +836,14 @@ function openSecret(){
         Vancouver, Canada Time 🌙🖤`;
     }
 }
+
+function closePopup(){
+
+    document.getElementById("popup")
+    .style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
