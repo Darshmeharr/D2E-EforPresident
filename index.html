@@ -17,6 +17,7 @@
 }
 
 html,body{
+    width:100%;
     height:100%;
 }
 
@@ -41,6 +42,8 @@ body{
 
     overflow-x:hidden;
     position:relative;
+
+    padding:20px;
 }
 
 /* DARK OVERLAY */
@@ -80,6 +83,8 @@ body::before{
     z-index:1;
 
     color:#ffffff33;
+
+    pointer-events:none;
 }
 
 @keyframes fall{
@@ -99,13 +104,17 @@ body::before{
 
     position:fixed;
 
-    top:40px;
+    top:15px;
 
-    width:100%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
 
     text-align:center;
 
-    font-size:18px;
+    font-size:16px;
 
     color:#d9d9d9;
 
@@ -123,15 +132,15 @@ body::before{
 @keyframes floatTextPulse{
 
     0%{
-        transform:translateY(0);
+        transform:translateX(-50%) translateY(0);
     }
 
     50%{
-        transform:translateY(-5px);
+        transform:translateX(-50%) translateY(-5px);
     }
 
     100%{
-        transform:translateY(0);
+        transform:translateX(-50%) translateY(0);
     }
 }
 
@@ -141,7 +150,7 @@ body::before{
 
     max-width:950px;
 
-    width:90%;
+    width:100%;
 
     padding:40px;
 
@@ -176,6 +185,8 @@ body::before{
     margin-bottom:18px;
 
     opacity:.9;
+
+    line-height:1.2;
 }
 
 h1{
@@ -187,6 +198,8 @@ h1{
     letter-spacing:3px;
 
     color:#f5f5f5;
+
+    word-break:break-word;
 }
 
 /* CLOCKS */
@@ -219,6 +232,8 @@ h1{
     font-weight:bold;
 
     color:#ffffff;
+
+    line-height:1.5;
 }
 
 /* TEXT */
@@ -243,6 +258,8 @@ h1{
     margin-bottom:20px;
 
     font-size:17px;
+
+    line-height:1.7;
 }
 
 /* ICONS */
@@ -295,6 +312,8 @@ h1{
     transition:.3s;
 
     border:1px solid rgba(255,255,255,0.1);
+
+    width:auto;
 }
 
 .music-btn:hover{
@@ -321,6 +340,8 @@ h1{
     align-items:center;
 
     z-index:9999;
+
+    padding:20px;
 }
 
 .popupContent{
@@ -338,7 +359,7 @@ h1{
 
     max-width:450px;
 
-    width:90%;
+    width:100%;
 
     text-align:center;
 
@@ -359,20 +380,83 @@ h1{
     opacity:.7;
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 
 @media(max-width:768px){
 
-    .space-title{
-        font-size:42px;
-    }
-
-    h1{
-        font-size:38px;
+    body{
+        padding:15px;
+        align-items:center;
     }
 
     .container{
-        padding:25px;
+        padding:25px 18px;
+        border-radius:24px;
+    }
+
+    .space-title{
+        font-size:38px;
+    }
+
+    h1{
+        font-size:28px;
+        letter-spacing:1px;
+    }
+
+    .poem{
+        font-size:15px;
+        line-height:1.7;
+    }
+
+    .gurbani{
+        font-size:15px;
+    }
+
+    .status{
+        font-size:16px;
+    }
+
+    .icon{
+        font-size:45px;
+    }
+
+    .music-btn{
+        width:100%;
+        font-size:15px;
+    }
+
+    #floatText{
+        font-size:14px;
+        top:10px;
+    }
+
+    .clocks{
+        flex-direction:column;
+        gap:10px;
+        font-size:14px;
+    }
+}
+
+@media(max-width:480px){
+
+    .space-title{
+        font-size:32px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    .container{
+        padding:22px 15px;
+    }
+
+    .poem{
+        font-size:14px;
+    }
+
+    .icon{
+        font-size:40px;
     }
 }
 
@@ -469,6 +553,8 @@ for(let i = 0; i < 35; i++){
 
         <h2>🖤 Message 🖤</h2>
 
+        <br>
+
         <div id="popupMsg"></div>
 
         <div class="closeBtn"
@@ -484,16 +570,19 @@ for(let i = 0; i < 35; i++){
 
 <!-- AUDIO FILES -->
 
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-    <source src="background.mp3" type="audio/mpeg">
+    <source src="excuses.mp3" type="audio/mpeg">
 </audio>
 
+<!-- BUTTON MUSIC -->
 <audio id="manualMusic">
-    <source src="song2.mp3" type="audio/mpeg">
+    <source src="excuses.mp3" type="audio/mpeg">
 </audio>
 
+<!-- HEART CLICK MUSIC -->
 <audio id="luckyMe">
-    <source src="7lives.mp3" type="audio/mpeg">
+    <source src="excuses.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -517,6 +606,8 @@ document.getElementById("popup");
 
 document.body.addEventListener("click", function(){
 
+    bgMusic.volume = 0.5;
+
     bgMusic.play()
     .catch((error) => {
 
@@ -530,6 +621,8 @@ document.body.addEventListener("click", function(){
 // HEART CLICK FUNCTION
 
 function playLuckyMe(){
+
+    luckyMe.currentTime = 0;
 
     luckyMe.play();
 
