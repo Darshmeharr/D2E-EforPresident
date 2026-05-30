@@ -10,9 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:linear-gradient(135deg,#000,#0a0a1a,#1a0a2a);
-background-size:400% 400%;
-animation:gradientShift 20s ease infinite;
+background:#000;
 font-family:'Playfair Display',serif;
 color:#fff;
 min-height:100vh;
@@ -23,14 +21,9 @@ padding:20px;
 overflow-x:hidden;
 position:relative;
 }
-@keyframes gradientShift{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
 .star{
 position:fixed;
-color:rgba(255,255,255,.15);
+color:rgba(255,255,255,.12);
 pointer-events:none;
 animation:fall linear infinite;
 }
@@ -44,9 +37,8 @@ top:12px;
 left:50%;
 transform:translateX(-50%);
 font-family:'Great Vibes',cursive;
-font-size:26px;
-color:#eee;
-text-shadow:0 0 8px rgba(255,255,255,.5);
+font-size:24px;
+color:#ccc;
 z-index:10;
 }
 .card{
@@ -54,26 +46,20 @@ max-width:900px;
 width:100%;
 padding:40px;
 border-radius:30px;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
 text-align:center;
-box-shadow:0 0 25px rgba(255,255,255,.1);
-transition:transform .3s ease;
 }
-.card:hover{transform:scale(1.02)}
 h1{
 font-family:'Great Vibes',cursive;
-font-size:72px;
+font-size:70px;
 margin-bottom:10px;
-color:#fff;
-text-shadow:0 0 15px rgba(255,255,255,.6);
 }
 .sub{
 letter-spacing:2px;
 margin-bottom:20px;
 color:#ddd;
-font-style:italic;
 }
 .clocks{
 display:flex;
@@ -86,7 +72,6 @@ margin-bottom:25px;
 line-height:2;
 margin-bottom:25px;
 color:#ddd;
-font-size:18px;
 }
 .songList{
 display:flex;
@@ -103,18 +88,14 @@ border:none;
 padding:12px 18px;
 border-radius:30px;
 cursor:pointer;
-transition:all .3s ease;
-box-shadow:0 0 10px rgba(255,255,255,.2);
 }
 .songList button:hover,
 .ctrl:hover{
 background:#222;
-transform:translateY(-2px);
 }
 #playing{
 margin-top:10px;
 color:#bbb;
-font-style:italic;
 }
 .bar{
 height:6px;
@@ -123,13 +104,11 @@ border-radius:30px;
 overflow:hidden;
 margin:15px auto;
 max-width:500px;
-box-shadow:0 0 10px rgba(255,255,255,.2);
 }
 .fill{
 height:100%;
 width:0%;
-background:linear-gradient(90deg,#fff,#ff99cc,#ff6699);
-transition:width .2s linear;
+background:white;
 }
 .controls{
 display:flex;
@@ -147,14 +126,6 @@ background:#111;
 color:white;
 font-size:35px;
 cursor:pointer;
-transition:all .3s ease;
-box-shadow:0 0 15px rgba(255,255,255,.3);
-}
-.heart:hover{
-background:#222;
-transform:scale(1.1);
-color:#ff6699;
-text-shadow:0 0 10px #ff99cc;
 }
 .popup{
 position:fixed;
@@ -173,22 +144,17 @@ padding:35px;
 border-radius:25px;
 text-align:center;
 line-height:2;
-box-shadow:0 0 25px rgba(255,255,255,.2);
 }
 .popupBox h2{
 font-family:'Great Vibes',cursive;
 font-size:45px;
 margin-bottom:15px;
-color:#fff;
-text-shadow:0 0 12px rgba(255,255,255,.6);
 }
 .close{
 margin-top:20px;
 cursor:pointer;
 color:#ccc;
-transition:color .3s ease;
 }
-.close:hover{color:#fff}
 @media(max-width:768px){
 h1{font-size:45px}
 .card{padding:25px}
@@ -261,8 +227,10 @@ Sundays still hide something special 🌙
 <audio id="player"></audio>
 
 <script>
-const symbols=["🖤","☾","✦","🌑","❖","♡","🌙","✨"];
-for(let i=0;i<45;i++){
+
+const symbols=["🖤","☾","✦","🌑","❖","♡"];
+
+for(let i=0;i<35;i++){
 let s=document.createElement("div");
 s.className="star";
 s.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
@@ -281,6 +249,7 @@ const songs=[
 ];
 
 let current=0;
+
 const player=document.getElementById("player");
 
 function loadSong(){
@@ -288,7 +257,117 @@ player.src=songs[current].file;
 document.getElementById("playing").innerHTML=
 "Now Playing: "+songs[current].title;
 }
-function setSong(i){current=i;loadSong();player.play();}
-function nextSong(){current=(current+1)%songs.length;loadSong();player.play();}
-function prevSong(){current=(current-1+songs.length)%songs.length;loadSong();player.play();}
-function toggle(){if(player.paused){player.play
+
+function setSong(i){
+current=i;
+loadSong();
+player.play();
+}
+
+function nextSong(){
+current=(current+1)%songs.length;
+loadSong();
+player.play();
+}
+
+function prevSong(){
+current=(current-1+songs.length)%songs.length;
+loadSong();
+player.play();
+}
+
+function toggle(){
+if(player.paused){
+player.play();
+}else{
+player.pause();
+}
+}
+
+player.addEventListener("timeupdate",()=>{
+if(player.duration){
+document.getElementById("fill").style.width=
+(player.currentTime/player.duration)*100+"%";
+}
+});
+
+player.addEventListener("ended",nextSong);
+
+loadSong();
+
+function updateClocks(){
+
+const now=new Date();
+
+const india=
+now.toLocaleTimeString("en-IN",{
+timeZone:"Asia/Kolkata",
+hour12:true
+});
+
+const canada=
+now.toLocaleTimeString("en-CA",{
+timeZone:"America/Vancouver",
+hour12:true
+});
+
+document.getElementById("india").innerHTML=
+"🇮🇳 India: "+india;
+
+document.getElementById("canada").innerHTML=
+"🇨🇦 Canada: "+canada;
+}
+
+setInterval(updateClocks,1000);
+updateClocks();
+
+function openSecret(){
+
+const indiaTime=new Date(
+new Date().toLocaleString(
+"en-US",
+{timeZone:"Asia/Kolkata"}
+)
+);
+
+const sunday=
+indiaTime.getDay()===0 &&
+indiaTime.getHours()>=3 &&
+indiaTime.getHours()<6;
+
+document.getElementById("popup").style.display="flex";
+
+if(sunday){
+
+document.getElementById("secretText").innerHTML=
+`
+Hey Eemanjot 🖤<br><br>
+This message only appears on Sunday mornings.<br><br>
+Darshmehar Singh beside Eemanjot Kaur<br>
+still sounds beautiful.<br><br>
+Maybe some connections take the long route
+before finding the right place.
+`;
+
+}else{
+
+document.getElementById("secretText").innerHTML=
+`
+The real message only appears on Sunday
+between 3AM and 6AM IST 🌙
+`;
+}
+}
+
+function closeSecret(){
+document.getElementById("popup").style.display="none";
+}
+
+document.body.addEventListener("click",()=>{
+player.play().catch(()=>{});
+},{once:true});
+
+</script>
+
+</body>
+</html>
