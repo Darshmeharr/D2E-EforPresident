@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,7 +17,8 @@
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
     overflow-x:hidden;
@@ -35,7 +37,9 @@ body{
     font-family:'Playfair Display',serif;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:20px;
@@ -58,24 +62,24 @@ body::before{
     rgba(255,255,255,0.04),
     transparent 60%);
 
-    z-index:0;
-
     pointer-events:none;
+
+    z-index:0;
 }
 
-/* STARS */
+/* FALLING SYMBOLS */
 
 .star{
 
     position:fixed;
 
-    color:rgba(255,255,255,0.12);
-
-    animation:fall linear infinite;
-
     z-index:1;
 
     pointer-events:none;
+
+    color:rgba(255,255,255,0.12);
+
+    animation:fall linear infinite;
 }
 
 @keyframes fall{
@@ -101,15 +105,15 @@ body::before{
 
     transform:translateX(-50%);
 
-    width:92%;
+    width:90%;
 
     text-align:center;
 
     font-family:'Great Vibes',cursive;
 
-    font-size:20px;
+    font-size:22px;
 
-    color:#d8d8d8;
+    color:#d7d7d7;
 
     z-index:10;
 
@@ -123,7 +127,7 @@ body::before{
     }
 
     50%{
-        transform:translateX(-50%) translateY(-5px);
+        transform:translateX(-50%) translateY(-4px);
     }
 
     100%{
@@ -131,25 +135,28 @@ body::before{
     }
 }
 
-/* MAIN CARD */
+/* CARD */
 
 .container{
 
     width:100%;
-    max-width:980px;
 
-    padding:50px 35px;
+    max-width:1000px;
+
+    padding:55px 35px;
 
     border-radius:35px;
 
-    background:rgba(255,255,255,0.04);
+    background:
+    rgba(255,255,255,0.04);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
-    border:1px solid rgba(255,255,255,0.08);
+    border:
+    1px solid rgba(255,255,255,0.08);
 
     box-shadow:
-    0 0 50px rgba(255,255,255,0.05);
+    0 0 60px rgba(255,255,255,0.05);
 
     position:relative;
 
@@ -160,26 +167,24 @@ body::before{
     overflow:hidden;
 }
 
-/* SMALL GLOW */
-
 .container::before{
 
     content:"";
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    top:-150px;
+    right:-100px;
 
     background:
     radial-gradient(circle,
     rgba(255,255,255,0.08),
     transparent 70%);
-
-    top:-120px;
-    right:-100px;
-
-    border-radius:50%;
 }
 
 /* TITLE */
@@ -188,13 +193,11 @@ body::before{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:72px;
+    font-size:76px;
 
-    line-height:1.1;
+    color:white;
 
     margin-bottom:10px;
-
-    color:#ffffff;
 }
 
 .names{
@@ -203,22 +206,9 @@ body::before{
 
     letter-spacing:3px;
 
-    margin-bottom:28px;
-
     color:#e8e8e8;
-}
-
-/* STATUS */
-
-.status{
 
     margin-bottom:25px;
-
-    font-size:18px;
-
-    color:#f3f3f3;
-
-    line-height:1.8;
 }
 
 /* CLOCKS */
@@ -229,18 +219,31 @@ body::before{
 
     justify-content:center;
 
-    gap:35px;
-
     flex-wrap:wrap;
 
-    margin-bottom:30px;
+    gap:25px;
 
-    color:#d4d4d4;
+    margin-bottom:25px;
+
+    color:#d5d5d5;
 
     font-size:15px;
 }
 
-/* MAIN TEXT */
+/* STATUS */
+
+.status{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#f0f0f0;
+
+    margin-bottom:25px;
+}
+
+/* MESSAGE */
 
 .message{
 
@@ -248,27 +251,25 @@ body::before{
 
     line-height:2;
 
-    color:#dcdcdc;
+    color:#dadada;
 
-    margin-bottom:28px;
+    margin-bottom:25px;
 }
 
-/* FOREVER SECTION */
+/* FOREVER */
 
 .forever{
 
-    margin-top:10px;
-
-    margin-bottom:30px;
-
     font-size:16px;
 
-    color:#bcbcbc;
+    color:#bdbdbd;
 
     line-height:1.9;
+
+    margin-bottom:30px;
 }
 
-/* BUTTON */
+/* HEART BUTTON */
 
 .heartBtn{
 
@@ -279,23 +280,20 @@ body::before{
 
     border:none;
 
-    background:
-    radial-gradient(circle,
-    #1a1a1a,
-    #080808);
+    cursor:pointer;
+
+    font-size:40px;
 
     color:white;
 
-    font-size:42px;
-
-    cursor:pointer;
-
-    transition:.4s;
-
-    box-shadow:
-    0 0 25px rgba(255,255,255,0.08);
+    background:
+    radial-gradient(circle,
+    #1a1a1a,
+    #070707);
 
     animation:pulse 2.5s infinite;
+
+    transition:.4s;
 }
 
 .heartBtn:hover{
@@ -306,7 +304,7 @@ body::before{
 @keyframes pulse{
 
     0%{
-        box-shadow:0 0 10px rgba(255,255,255,0.04);
+        box-shadow:0 0 12px rgba(255,255,255,0.04);
     }
 
     50%{
@@ -314,49 +312,136 @@ body::before{
     }
 
     100%{
-        box-shadow:0 0 10px rgba(255,255,255,0.04);
+        box-shadow:0 0 12px rgba(255,255,255,0.04);
     }
 }
 
-/* MUSIC BUTTON */
+/* SONG TABS */
 
-.musicBtn{
+.songTabs{
 
-    margin-top:25px;
+    display:flex;
 
-    padding:14px 30px;
+    flex-wrap:wrap;
 
-    border-radius:40px;
+    justify-content:center;
 
-    border:1px solid rgba(255,255,255,0.08);
+    gap:12px;
+
+    margin-top:35px;
+}
+
+.songTabs button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:30px;
 
     background:#111;
 
     color:white;
 
-    font-size:16px;
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.songTabs button:hover{
+
+    transform:translateY(-3px);
+
+    background:#1d1d1d;
+}
+
+/* NOW PLAYING */
+
+.nowPlaying{
+
+    margin-top:20px;
+
+    color:#cfcfcf;
+
+    font-size:15px;
+}
+
+/* PROGRESS BAR */
+
+.progressContainer{
+
+    width:100%;
+
+    max-width:500px;
+
+    height:8px;
+
+    margin:18px auto;
+
+    background:#1c1c1c;
+
+    border-radius:50px;
+
+    overflow:hidden;
+}
+
+.progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:white;
+}
+
+/* CONTROLS */
+
+.controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:10px;
+}
+
+.controlBtn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#111;
+
+    color:white;
 
     cursor:pointer;
 
     transition:.3s;
 }
 
-.musicBtn:hover{
+.controlBtn:hover{
 
-    transform:scale(1.05);
-
-    background:#1a1a1a;
+    background:#1d1d1d;
 }
 
-/* SECRET */
+/* SECRET TEXT */
 
 .secret{
 
     margin-top:30px;
 
-    font-size:14px;
-
     color:#8f8f8f;
+
+    font-size:14px;
 
     letter-spacing:2px;
 }
@@ -385,18 +470,21 @@ body::before{
 .popupContent{
 
     width:100%;
-    max-width:620px;
 
-    padding:40px 28px;
+    max-width:650px;
 
-    border-radius:32px;
+    padding:40px 30px;
+
+    border-radius:35px;
 
     background:
-    linear-gradient(180deg,
-    #111111,
-    #060606);
+    linear-gradient(
+    180deg,
+    #111,
+    #050505);
 
-    border:1px solid rgba(255,255,255,0.08);
+    border:
+    1px solid rgba(255,255,255,0.08);
 
     text-align:center;
 
@@ -407,18 +495,18 @@ body::before{
 
     font-family:'Great Vibes',cursive;
 
-    font-size:42px;
+    font-size:46px;
 
     margin-bottom:15px;
 }
 
 .closeBtn{
 
-    margin-top:25px;
+    margin-top:20px;
 
     cursor:pointer;
 
-    color:#d4d4d4;
+    color:#d5d5d5;
 }
 
 /* MOBILE */
@@ -426,353 +514,46 @@ body::before{
 @media(max-width:768px){
 
     .container{
-
         padding:35px 20px;
     }
 
     .love{
-
-        font-size:46px;
+        font-size:48px;
     }
 
     .names{
-
         font-size:18px;
-
         letter-spacing:1px;
     }
 
     .message{
-
         font-size:15px;
-
-        line-height:1.9;
     }
 
-    .forever{
-
-        font-size:14px;
+    .songTabs{
+        flex-direction:column;
     }
 
-    .heartBtn{
-
-        width:82px;
-        height:82px;
-
-        font-size:32px;
-    }
-
-    .musicBtn{
-
+    .songTabs button{
         width:100%;
     }
 
     .clocks{
-
         flex-direction:column;
-
         gap:10px;
     }
 
-    #topText{
-
-        font-size:15px;
+    .heartBtn{
+        width:85px;
+        height:85px;
+        font-size:30px;
     }
 
-    .popupContent{
-
-        padding:28px 18px;
+    #topText{
+        font-size:16px;
     }
 }
 
 </style>
+
 </head>
-
-<body>
-
-<div id="topText">
-    some people feel like destiny at 3AM 🌙
-</div>
-
-<!-- FALLING SYMBOLS -->
-
-<script>
-
-const symbols = ["🖤","☾","✦","🌑","❖","♡"];
-
-for(let i=0;i<45;i++){
-
-    const el = document.createElement("div");
-
-    el.className = "star";
-
-    el.innerHTML =
-    symbols[Math.floor(Math.random()*symbols.length)];
-
-    el.style.left =
-    Math.random()*100 + "vw";
-
-    el.style.animationDuration =
-    (7 + Math.random()*8) + "s";
-
-    el.style.fontSize =
-    (14 + Math.random()*24) + "px";
-
-    document.body.appendChild(el);
-}
-
-</script>
-
-<div class="container">
-
-    <div class="love">
-        Darshmehar × Eemanjot
-    </div>
-
-    <div class="names">
-        SOME CONNECTIONS NEVER ARRIVE NORMALLY
-    </div>
-
-    <div class="clocks">
-
-        <div id="indiaTime">
-            🇮🇳 India: --
-        </div>
-
-        <div id="canadaTime">
-            🇨🇦 Canada: --
-        </div>
-
-    </div>
-
-    <div class="status" id="status">
-
-        🖤 Darshmehar still thinks
-        Eemanjot sounds beautiful beside his name.
-
-    </div>
-
-    <div class="message">
-
-        You called me creative right?<br><br>
-
-        So this page is just a small preview<br>
-        of how being with me would feel.<br><br>
-
-        Not loud.<br>
-        Not forced.<br>
-        Just calm nights, deep talks,<br>
-        music playing softly,<br>
-        and someone choosing you everyday.<br><br>
-
-        Maybe this isn't a coincidence anymore.
-
-    </div>
-
-    <div class="forever">
-
-        Sundays still hide something special though 🌙<br>
-        Come back between <b>3AM and 6AM IST</b>.
-
-    </div>
-
-    <button class="heartBtn"
-    onclick="openSecret()">
-
-        🖤
-
-    </button>
-
-    <br>
-
-    <button class="musicBtn"
-    onclick="toggleMusic(this)">
-
-        ▶ Play Music
-
-    </button>
-
-    <div class="secret">
-        made quietly for one person only
-    </div>
-
-</div>
-
-<!-- POPUP -->
-
-<div class="popup" id="popup">
-
-    <div class="popupContent">
-
-        <h2>For Eemanjot 🌙</h2>
-
-        <div id="popupMessage"></div>
-
-        <div class="closeBtn"
-        onclick="closePopup()">
-
-            Close
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-    <source src="excuses.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-// MUSIC
-
-const music =
-document.getElementById("bgMusic");
-
-let playing = false;
-
-document.body.addEventListener("click",()=>{
-
-    music.volume = 0.45;
-
-    music.play().catch(()=>{});
-
-},{once:true});
-
-function toggleMusic(btn){
-
-    if(playing){
-
-        music.pause();
-
-        btn.innerHTML =
-        "▶ Play Music";
-
-    } else {
-
-        music.play();
-
-        btn.innerHTML =
-        "⏸ Pause Music";
-    }
-
-    playing = !playing;
-}
-
-// CLOCKS
-
-function updateClocks(){
-
-    const now = new Date();
-
-    const india = new Date(
-        now.toLocaleString(
-            "en-US",
-            {timeZone:"Asia/Kolkata"}
-        )
-    );
-
-    const indiaTime =
-    india.toLocaleTimeString(
-        "en-IN",
-        {
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit",
-            hour12:true
-        }
-    );
-
-    const canadaTime =
-    now.toLocaleTimeString(
-        "en-CA",
-        {
-            timeZone:"America/Vancouver",
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit",
-            hour12:true
-        }
-    );
-
-    document.getElementById("indiaTime").innerHTML =
-    "🇮🇳 India: " + indiaTime;
-
-    document.getElementById("canadaTime").innerHTML =
-    "🇨🇦 Canada: " + canadaTime;
-}
-
-setInterval(updateClocks,1000);
-
-updateClocks();
-
-// SECRET MESSAGE
-
-function openSecret(){
-
-    const india = new Date(
-        new Date().toLocaleString(
-            "en-US",
-            {timeZone:"Asia/Kolkata"}
-        )
-    );
-
-    const day = india.getDay();
-
-    const hour = india.getHours();
-
-    const sundayMode =
-    day === 0 && hour >=3 && hour <6;
-
-    const popup =
-    document.getElementById("popup");
-
-    const msg =
-    document.getElementById("popupMessage");
-
-    popup.style.display = "flex";
-
-    if(sundayMode){
-
-        msg.innerHTML =
-
-        `Heyyy love 🖤<br><br>
-
-        This hidden part only opens on Sunday nights.<br><br>
-
-        Told you...<br>
-        if you don't have someone,<br>
-        you have me.<br><br>
-
-        And honestly?<br>
-        <b>Darshmehar Singh</b><br>
-        beside<br>
-        <b>Eemanjot Kaur</b><br>
-        sounds dangerously beautiful 🌙<br><br>
-
-        After tonight...<br>
-        I'll quietly look for some red sign on your IG ❤️`;
-
-    } else {
-
-        msg.innerHTML =
-
-        `The real message only appears<br>
-        on Sunday between<br>
-        <b>3AM and 6AM IST</b> 🌙🖤`;
-    }
-}
-
-function closePopup(){
-
-    document.getElementById("popup")
-    .style.display = "none";
-}
-
-</script>
-
-</body>
-</html>
