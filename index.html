@@ -8,161 +8,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+/* ...existing code... */
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
 body{
-background:#000;
-font-family:'Playfair Display',serif;
-color:#fff;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-overflow-x:hidden;
-position:relative;
+  background:#000;
+  font-family:'Playfair Display',serif;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow-x:hidden;
+  position:relative;
 }
+/* Twinkling star field (container handled in JS) */
 .star{
-position:fixed;
-color:rgba(255,255,255,.12);
-pointer-events:none;
-animation:fall linear infinite;
+  position:fixed;
+  color:rgba(255,255,255,.12);
+  pointer-events:none;
+  animation:fall linear infinite, twinkle 3s ease-in-out infinite;
+  text-shadow:0 0 8px rgba(255,255,255,.05);
 }
 @keyframes fall{
-from{transform:translateY(-10vh)}
-to{transform:translateY(110vh)}
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
 }
-#top{
-position:fixed;
-top:12px;
-left:50%;
-transform:translateX(-50%);
-font-family:'Great Vibes',cursive;
-font-size:24px;
-color:#ccc;
-z-index:10;
+@keyframes twinkle{
+  0%{opacity:.2;transform:scale(.95)}
+  50%{opacity:1;transform:scale(1.08)}
+  100%{opacity:.2;transform:scale(.95)}
 }
+
+/* Animated glowing moon */
+.moon{
+  position:fixed;
+  right:8%;
+  top:8%;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#fff 0%, #f0e9ff 10%, #c7b8ff 30%, rgba(255,255,255,.06) 60%);
+  box-shadow:0 0 40px rgba(200,180,255,.2), inset -6px -6px 20px rgba(0,0,0,.15);
+  filter:blur(.2px);
+  animation:moonGlow 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes moonGlow{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-6px) scale(1.02)}
+}
+
+/* Shooting star */
+.shooting{
+  position:fixed;
+  width:2px;
+  height:80px;
+  background:linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,0));
+  transform:rotate(-35deg);
+  pointer-events:none;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,.8));
+  animation:shoot linear forwards;
+  z-index:12;
+}
+@keyframes shoot{
+  from{opacity:1;transform:translate3d(0,0,0) rotate(-35deg) translateZ(0)}
+  to{opacity:0;transform:translate3d(-1200px,800px,0) rotate(-35deg) translateZ(0)}
+}
+
+/* Cinematic intro screen */
+#intro{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(2,2,10,.95),rgba(0,0,0,.95));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+  flex-direction:column;
+  gap:18px;
+  padding:20px;
+}
+.introTitle{
+  font-family:'Great Vibes',cursive;
+  font-size:48px;
+  color:#fff;
+  text-align:center;
+  letter-spacing:1px;
+  text-shadow:0 8px 30px rgba(100,80,255,.12);
+}
+.playBtn{
+  background:linear-gradient(90deg,#8a6bff,#ff6bcb);
+  color:white;
+  border:none;
+  padding:14px 28px;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(139,103,255,.18);
+  transform:translateY(0);
+  transition:transform .18s ease;
+}
+.playBtn:active{transform:translateY(2px)}
+
+/* Glassmorphism card (existing card updated) */
 .card{
-max-width:900px;
-width:100%;
-padding:40px;
-border-radius:30px;
-background:rgba(255,255,255,.04);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,.08);
-text-align:center;
+  max-width:900px;
+  width:100%;
+  padding:40px;
+  border-radius:30px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  backdrop-filter: blur(12px) saturate(120%);
+  border:1px solid rgba(255,255,255,.06);
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);
 }
-h1{
-font-family:'Great Vibes',cursive;
-font-size:70px;
-margin-bottom:10px;
-}
-.sub{
-letter-spacing:2px;
-margin-bottom:20px;
-color:#ddd;
-}
-.clocks{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-margin-bottom:25px;
-}
-.msg{
-line-height:2;
-margin-bottom:25px;
-color:#ddd;
-}
-.songList{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin:20px 0;
-}
-.songList button,
-.ctrl{
-background:#111;
-color:#fff;
-border:none;
-padding:12px 18px;
-border-radius:30px;
-cursor:pointer;
-}
-.songList button:hover,
-.ctrl:hover{
-background:#222;
-}
-#playing{
-margin-top:10px;
-color:#bbb;
-}
-.bar{
-height:6px;
-background:#222;
-border-radius:30px;
-overflow:hidden;
-margin:15px auto;
-max-width:500px;
-}
-.fill{
-height:100%;
-width:0%;
-background:white;
-}
-.controls{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
+
+/* Pulsing heart button */
 .heart{
-margin-top:30px;
-width:90px;
-height:90px;
-border-radius:50%;
-border:none;
-background:#111;
-color:white;
-font-size:35px;
-cursor:pointer;
+  margin-top:30px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(180deg,#111,#0b0b0b);
+  color:white;
+  font-size:35px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  animation:heartBeat 1.8s ease-in-out infinite;
+  transition:transform .12s ease;
 }
-.popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.95);
-display:none;
-justify-content:center;
-align-items:center;
-padding:20px;
+.heart:active{transform:scale(.98)}
+@keyframes heartBeat{
+  0%{box-shadow:0 0 0 0 rgba(255,30,80,0.12)}
+  40%{box-shadow:0 0 0 18px rgba(255,30,80,0.04)}
+  100%{box-shadow:0 0 0 0 rgba(255,30,80,0)}
 }
-.popupBox{
-max-width:600px;
-width:100%;
-background:#0d0d0d;
-padding:35px;
-border-radius:25px;
-text-align:center;
-line-height:2;
+
+/* Rotating quotes */
+.quotes{
+  margin-top:18px;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#e6e6ff;
+  font-style:italic;
+  opacity:.95;
 }
-.popupBox h2{
-font-family:'Great Vibes',cursive;
-font-size:45px;
-margin-bottom:15px;
+.quote{
+  position:relative;
+  animation:fadeInOut 8s infinite;
 }
-.close{
-margin-top:20px;
-cursor:pointer;
-color:#ccc;
+@keyframes fadeInOut{
+  0%{opacity:0; transform:translateY(8px)}
+  10%{opacity:1; transform:translateY(0)}
+  60%{opacity:1}
+  90%{opacity:0; transform:translateY(-6px)}
+  100%{opacity:0}
 }
+
+/* small responsive tweaks */
 @media(max-width:768px){
-h1{font-size:45px}
-.card{padding:25px}
-.songList button{width:100%}
+  h1{font-size:45px}
+  .card{padding:25px}
+  .songList button{width:100%}
+  .moon{width:84px;height:84px;right:6%;top:6%}
+  .introTitle{font-size:34px}
+  .playBtn{padding:12px 20px}
 }
 </style>
 </head>
 <body>
+
+<!-- Cinematic intro screen -->
+<div id="intro" role="dialog" aria-label="Intro cinematic">
+  <div class="introTitle">Darshmehar × Eemanjot</div>
+  <div style="color:#cfc9ff;max-width:680px;text-align:center">A small preview of calm nights, deep talks and someone choosing you every day.</div>
+  <button class="playBtn" id="introPlay">▶ Enter</button>
+  <div style="color:#888;font-size:13px;margin-top:8px">Tap to reveal the secret and unlock music</div>
+</div>
+
+<!-- Animated moon (visual only) -->
+<div class="moon" aria-hidden="true"></div>
 
 <div id="top">some people feel like destiny at 3AM 🌙</div>
 
@@ -198,7 +230,7 @@ And someone choosing you every day.
 Now Playing: Excuses
 </div>
 
-<div class="bar">
+<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
 <div class="fill" id="fill"></div>
 </div>
 
@@ -210,13 +242,17 @@ Now Playing: Excuses
 
 <button class="heart" onclick="openSecret()">🖤</button>
 
+<div class="quotes" aria-live="polite">
+  <div id="quote" class="quote">"Quiet nights hold honest conversations."</div>
+</div>
+
 <div style="margin-top:20px;color:#999">
 Sundays still hide something special 🌙
 </div>
 
 </div>
 
-<div class="popup" id="popup">
+<div class="popup" id="popup" aria-hidden="true">
 <div class="popupBox">
 <h2>For Eemanjot 🌙</h2>
 <div id="secretText"></div>
@@ -224,150 +260,619 @@ Sundays still hide something special 🌙
 </div>
 </div>
 
-<audio id="player"></audio>
+<audio id="player" preload="metadata"></audio>
 
 <script>
+/* ...existing code... (rewritten JS to add scenes, shooting stars, quotes, controlled star field) */
 
 const symbols=["🖤","☾","✦","🌑","❖","♡"];
+const STAR_COUNT = 40;
+let starsCreated = false;
+let starInterval = null;
 
-for(let i=0;i<35;i++){
-let s=document.createElement("div");
-s.className="star";
-s.innerHTML=symbols[Math.floor(Math.random()*symbols.length)];
-s.style.left=Math.random()*100+"vw";
-s.style.fontSize=(12+Math.random()*22)+"px";
-s.style.animationDuration=(7+Math.random()*10)+"s";
-document.body.appendChild(s);
-}
+const player=document.getElementById("player");
+const popup=document.getElementById("popup");
+const secretText=document.getElementById("secretText");
+const quoteEl=document.getElementById("quote");
+const intro=document.getElementById("intro");
+const introPlay=document.getElementById("introPlay");
 
+/* Songs list */
 const songs=[
-{title:"Excuses",file:"excuses.mp3"},
-{title:"Door",file:"door.mp3"},
-{title:"Obsessed",file:"obsessed.mp3"},
-{title:"Sajna",file:"sajna.mp3"},
-{title:"Let Me",file:"letme.mp3"}
+  {title:"Excuses",file:"excuses.mp3"},
+  {title:"Door",file:"door.mp3"},
+  {title:"Obsessed",file:"obsessed.mp3"},
+  {title:"Sajna",file:"sajna.mp3"},
+  {title:"Let Me",file:"letme.mp3"}
 ];
 
 let current=0;
 
-const player=document.getElementById("player");
-
+/* load / playback helpers */
 function loadSong(){
-player.src=songs[current].file;
-document.getElementById("playing").innerHTML=
-"Now Playing: "+songs[current].title;
+  player.src=songs[current].file;
+  document.getElementById("playing").innerHTML="Now Playing: "+songs[current].title;
 }
-
-function setSong(i){
-current=i;
-loadSong();
-player.play();
-}
-
-function nextSong(){
-current=(current+1)%songs.length;
-loadSong();
-player.play();
-}
-
-function prevSong(){
-current=(current-1+songs.length)%songs.length;
-loadSong();
-player.play();
-}
-
-function toggle(){
-if(player.paused){
-player.play();
-}else{
-player.pause();
-}
-}
+function setSong(i){ current=i; loadSong(); player.play().catch(()=>{}); }
+function nextSong(){ current=(current+1)%songs.length; loadSong(); player.play().catch(()=>{}); }
+function prevSong(){ current=(current-1+songs.length)%songs.length; loadSong(); player.play().catch(()=>{}); }
+function toggle(){ if(player.paused){ player.play().catch(()=>{}); }else{ player.pause(); } }
 
 player.addEventListener("timeupdate",()=>{
-if(player.duration){
-document.getElementById("fill").style.width=
-(player.currentTime/player.duration)*100+"%";
-}
+  if(player.duration){
+    document.getElementById("fill").style.width=(player.currentTime/player.duration)*100+"%";
+    document.querySelector('.bar').setAttribute('aria-valuenow', Math.floor((player.currentTime/player.duration)*100));
+  }
 });
-
 player.addEventListener("ended",nextSong);
-
 loadSong();
 
-function updateClocks(){
-
-const now=new Date();
-
-const india=
-now.toLocaleTimeString("en-IN",{
-timeZone:"Asia/Kolkata",
-hour12:true
-});
-
-const canada=
-now.toLocaleTimeString("en-CA",{
-timeZone:"America/Vancouver",
-hour12:true
-});
-
-document.getElementById("india").innerHTML=
-"🇮🇳 India: "+india;
-
-document.getElementById("canada").innerHTML=
-"🇨🇦 Canada: "+canada;
+/* Twinkling star field (created on demand so intro can show first) */
+function createStar(){
+  const s=document.createElement("div");
+  s.className="star";
+  s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  s.style.left=(Math.random()*100)+"vw";
+  s.style.top=(-(10+Math.random()*10))+"vh";
+  s.style.fontSize=(8+Math.random()*26)+"px";
+  s.style.opacity = (0.06 + Math.random()*0.9).toFixed(2);
+  s.style.animationDuration=(7+Math.random()*12)+"s";
+  document.body.appendChild(s);
+  // remove after fall finishes to avoid DOM bloat
+  setTimeout(()=>s.remove(), (parseFloat(s.style.animationDuration)||10)*1000 + 2000);
 }
 
+function startStarField(){
+  if(starsCreated) return;
+  starsCreated = true;
+  // create initial burst
+  for(let i=0;i<STAR_COUNT;i++) createStar();
+  // keep spawning gently
+  starInterval = setInterval(()=> {
+    if(Math.random() < 0.6) createStar();
+  }, 900);
+}
+
+/* Shooting stars occasionally */
+function spawnShootingStar(){
+  const s=document.createElement("div");
+  s.className="shooting";
+  // random start position near upper-right to simulate arc
+  const startLeft = 60 + Math.random()*30;
+  const startTop = 5 + Math.random()*20;
+  s.style.left = startLeft + "vw";
+  s.style.top = startTop + "vh";
+  s.style.width = (1 + Math.random()*3) + "px";
+  const dur = 800 + Math.random()*1000;
+  s.style.animationDuration = dur + "ms";
+  document.body.appendChild(s);
+  setTimeout(()=> s.remove(), dur+200);
+}
+
+/* Occasionally spawn shooting stars */
+setInterval(()=> { if(starsCreated && Math.random() < 0.18) spawnShootingStar(); }, 1200);
+
+/* Rotating inspirational quotes */
+const quotes = [
+  "Quiet nights hold honest conversations.",
+  "Connections find their own time.",
+  "Music remembers what words cannot say.",
+  "Some stories arrive under moonlight.",
+  "Choose someone who chooses you every day."
+];
+let qi = 0;
+function rotateQuote(){
+  quoteEl.classList.remove('quote');
+  void quoteEl.offsetWidth;
+  quoteEl.classList.add('quote');
+  quoteEl.textContent = quotes[qi];
+  qi = (qi+1) % quotes.length;
+}
+setInterval(rotateQuote, 8000);
+rotateQuote();
+
+/* Clocks (unchanged logic but kept here) */
+function updateClocks(){
+  const now=new Date();
+  const india = now.toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true});
+  const canada = now.toLocaleTimeString("en-CA",{timeZone:"America/Vancouver",hour:"numeric",minute:"2-digit",hour12:true});
+  document.getElementById("india").innerHTML="🇮🇳 India: "+india;
+  document.getElementById("canada").innerHTML="🇨🇦 Canada: "+canada;
+}
 setInterval(updateClocks,1000);
 updateClocks();
 
+/* Secret popup logic */
 function openSecret(){
-
-const indiaTime=new Date(
-new Date().toLocaleString(
-"en-US",
-{timeZone:"Asia/Kolkata"}
-)
-);
-
-const sunday=
-indiaTime.getDay()===0 &&
-indiaTime.getHours()>=3 &&
-indiaTime.getHours()<6;
-
-document.getElementById("popup").style.display="flex";
-
-if(sunday){
-
-document.getElementById("secretText").innerHTML=
-`
-Hey Eemanjot 🖤<br><br>
-This message only appears on Sunday mornings.<br><br>
-Darshmehar Singh beside Eemanjot Kaur<br>
-still sounds beautiful.<br><br>
-Maybe some connections take the long route
-before finding the right place. If you are with me would be looking for some red sign on your IG Story after Sunday.. Love to see over there . bcuz Laal rang looks good on you!!
-`;
-
-}else{
-
-document.getElementById("secretText").innerHTML=
-`
-The real message only appears on Sunday
-between 3AM and 6AM IST 🌙
-`;
+  // IST reliable time
+  const indiaTime=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Kolkata"}));
+  const sunday = indiaTime.getDay()===0 && indiaTime.getHours()>=3 && indiaTime.getHours()<6;
+  popup.style.display="flex";
+  popup.setAttribute('aria-hidden','false');
+  if(sunday){
+    secretText.innerHTML=`
+      Hey Eemanjot 🖤<br><br>
+      This message only appears on Sunday mornings.<br><br>
+      Darshmehar Singh beside Eemanjot Kaur<br>
+      still sounds beautiful.<br><br>
+      Maybe some connections take the long route
+      before finding the right place. If you are with me would be looking for some red sign on your IG Story after Sunday.. Love to see over there . bcuz Laal rang looks good on you!!
+    `;
+  } else {
+    secretText.innerHTML=`The real message only appears on Sunday between 3AM and 6AM IST 🌙`;
+  }
 }
-}
-
 function closeSecret(){
-document.getElementById("popup").style.display="none";
+  popup.style.display="none";
+  popup.setAttribute('aria-hidden','true');
 }
 
-document.body.addEventListener("click",()=>{
-player.play().catch(()=>{});
+/* Intro Play behavior: start star field, unlock audio */
+introPlay.addEventListener('click', ()=> {
+  intro.style.display = 'none';
+  startStarField();
+  // try to play to unlock autoplay policies
+  player.play().catch(()=>{});
+});
+
+/* Fallback: first body interaction hides intro (for keyboard/tap) */
+document.body.addEventListener("click", (e)=>{
+  // if intro is still visible and click outside of controls, remove intro
+  if(intro && intro.style.display !== 'none'){
+    intro.style.display = 'none';
+    startStarField();
+  }
+  // allow audio play attempt once
+  player.play().catch(()=>{});
 },{once:true});
 
+/* ensure initial star field created if user bypassed intro or script loaded after interaction */
+window.addEventListener('load', ()=> {
+  // do not auto-start starfield until user interacts; keep cinematic intro visible
+});
+
+/* Small accessibility: allow closing popup with Escape */
+window.addEventListener('keydown', (e)=> {
+  if(e.key === "Escape") closeSecret();
+});
 </script>
 
 </body>
 </html>
+```// filepath: /Users/darshmehar/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Darshmehar × Eemanjot</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ...existing code... */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:#000;
+  font-family:'Playfair Display',serif;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow-x:hidden;
+  position:relative;
+}
+/* Twinkling star field (container handled in JS) */
+.star{
+  position:fixed;
+  color:rgba(255,255,255,.12);
+  pointer-events:none;
+  animation:fall linear infinite, twinkle 3s ease-in-out infinite;
+  text-shadow:0 0 8px rgba(255,255,255,.05);
+}
+@keyframes fall{
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(110vh)}
+}
+@keyframes twinkle{
+  0%{opacity:.2;transform:scale(.95)}
+  50%{opacity:1;transform:scale(1.08)}
+  100%{opacity:.2;transform:scale(.95)}
+}
+
+/* Animated glowing moon */
+.moon{
+  position:fixed;
+  right:8%;
+  top:8%;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#fff 0%, #f0e9ff 10%, #c7b8ff 30%, rgba(255,255,255,.06) 60%);
+  box-shadow:0 0 40px rgba(200,180,255,.2), inset -6px -6px 20px rgba(0,0,0,.15);
+  filter:blur(.2px);
+  animation:moonGlow 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes moonGlow{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-6px) scale(1.02)}
+}
+
+/* Shooting star */
+.shooting{
+  position:fixed;
+  width:2px;
+  height:80px;
+  background:linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,0));
+  transform:rotate(-35deg);
+  pointer-events:none;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,.8));
+  animation:shoot linear forwards;
+  z-index:12;
+}
+@keyframes shoot{
+  from{opacity:1;transform:translate3d(0,0,0) rotate(-35deg) translateZ(0)}
+  to{opacity:0;transform:translate3d(-1200px,800px,0) rotate(-35deg) translateZ(0)}
+}
+
+/* Cinematic intro screen */
+#intro{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(2,2,10,.95),rgba(0,0,0,.95));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+  flex-direction:column;
+  gap:18px;
+  padding:20px;
+}
+.introTitle{
+  font-family:'Great Vibes',cursive;
+  font-size:48px;
+  color:#fff;
+  text-align:center;
+  letter-spacing:1px;
+  text-shadow:0 8px 30px rgba(100,80,255,.12);
+}
+.playBtn{
+  background:linear-gradient(90deg,#8a6bff,#ff6bcb);
+  color:white;
+  border:none;
+  padding:14px 28px;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(139,103,255,.18);
+  transform:translateY(0);
+  transition:transform .18s ease;
+}
+.playBtn:active{transform:translateY(2px)}
+
+/* Glassmorphism card (existing card updated) */
+.card{
+  max-width:900px;
+  width:100%;
+  padding:40px;
+  border-radius:30px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  backdrop-filter: blur(12px) saturate(120%);
+  border:1px solid rgba(255,255,255,.06);
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);
+}
+
+/* Pulsing heart button */
+.heart{
+  margin-top:30px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(180deg,#111,#0b0b0b);
+  color:white;
+  font-size:35px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  animation:heartBeat 1.8s ease-in-out infinite;
+  transition:transform .12s ease;
+}
+.heart:active{transform:scale(.98)}
+@keyframes heartBeat{
+  0%{box-shadow:0 0 0 0 rgba(255,30,80,0.12)}
+  40%{box-shadow:0 0 0 18px rgba(255,30,80,0.04)}
+  100%{box-shadow:0 0 0 0 rgba(255,30,80,0)}
+}
+
+/* Rotating quotes */
+.quotes{
+  margin-top:18px;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#e6e6ff;
+  font-style:italic;
+  opacity:.95;
+}
+.quote{
+  position:relative;
+  animation:fadeInOut 8s infinite;
+}
+@keyframes fadeInOut{
+  0%{opacity:0; transform:translateY(8px)}
+  10%{opacity:1; transform:translateY(0)}
+  60%{opacity:1}
+  90%{opacity:0; transform:translateY(-6px)}
+  100%{opacity:0}
+}
+
+/* small responsive tweaks */
+@media(max-width:768px){
+  h1{font-size:45px}
+  .card{padding:25px}
+  .songList button{width:100%}
+  .moon{width:84px;height:84px;right:6%;top:6%}
+  .introTitle{font-size:34px}
+  .playBtn{padding:12px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Cinematic intro screen -->
+<div id="intro" role="dialog" aria-label="Intro cinematic">
+  <div class="introTitle">Darshmehar × Eemanjot</div>
+  <div style="color:#cfc9ff;max-width:680px;text-align:center">A small preview of calm nights, deep talks and someone choosing you every day.</div>
+  <button class="playBtn" id="introPlay">▶ Enter</button>
+  <div style="color:#888;font-size:13px;margin-top:8px">Tap to reveal the secret and unlock music</div>
+</div>
+
+<!-- Animated moon (visual only) -->
+<div class="moon" aria-hidden="true"></div>
+
+<div id="top">some people feel like destiny at 3AM 🌙</div>
+
+<div class="card">
+
+<h1>Darshmehar × Eemanjot</h1>
+
+<div class="sub">
+SOME CONNECTIONS NEVER ARRIVE NORMALLY
+</div>
+
+<div class="clocks">
+<div id="india">🇮🇳 India --</div>
+<div id="canada">🇨🇦 Canada --</div>
+</div>
+
+<div class="msg">
+You called me creative right?<br><br>
+So this page is a small preview of how being with me would feel.<br>
+Calm nights. Deep talks. Music playing softly.<br>
+And someone choosing you every day.
+</div>
+
+<div class="songList">
+<button onclick="setSong(0)">🎵 Excuses</button>
+<button onclick="setSong(1)">🎵 Door</button>
+<button onclick="setSong(2)">🎵 Obsessed</button>
+<button onclick="setSong(3)">🎵 Sajna</button>
+<button onclick="setSong(4)">🎵 Let Me</button>
+</div>
+
+<div id="playing">
+Now Playing: Excuses
+</div>
+
+<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+<div class="fill" id="fill"></div>
+</div>
+
+<div class="controls">
+<button class="ctrl" onclick="prevSong()">⏮ Prev</button>
+<button class="ctrl" onclick="toggle()">▶ Play / Pause</button>
+<button class="ctrl" onclick="nextSong()">⏭ Next</button>
+</div>
+
+<button class="heart" onclick="openSecret()">🖤</button>
+
+<div class="quotes" aria-live="polite">
+  <div id="quote" class="quote">"Quiet nights hold honest conversations."</div>
+</div>
+
+<div style="margin-top:20px;color:#999">
+Sundays still hide something special 🌙
+</div>
+
+</div>
+
+<div class="popup" id="popup" aria-hidden="true">
+<div class="popupBox">
+<h2>For Eemanjot 🌙</h2>
+<div id="secretText"></div>
+<div class="close" onclick="closeSecret()">Close</div>
+</div>
+</div>
+
+<audio id="player" preload="metadata"></audio>
+
+<script>
+/* ...existing code... (rewritten JS to add scenes, shooting stars, quotes, controlled star field) */
+
+const symbols=["🖤","☾","✦","🌑","❖","♡"];
+const STAR_COUNT = 40;
+let starsCreated = false;
+let starInterval = null;
+
+const player=document.getElementById("player");
+const popup=document.getElementById("popup");
+const secretText=document.getElementById("secretText");
+const quoteEl=document.getElementById("quote");
+const intro=document.getElementById("intro");
+const introPlay=document.getElementById("introPlay");
+
+/* Songs list */
+const songs=[
+  {title:"Excuses",file:"excuses.mp3"},
+  {title:"Door",file:"door.mp3"},
+  {title:"Obsessed",file:"obsessed.mp3"},
+  {title:"Sajna",file:"sajna.mp3"},
+  {title:"Let Me",file:"letme.mp3"}
+];
+
+let current=0;
+
+/* load / playback helpers */
+function loadSong(){
+  player.src=songs[current].file;
+  document.getElementById("playing").innerHTML="Now Playing: "+songs[current].title;
+}
+function setSong(i){ current=i; loadSong(); player.play().catch(()=>{}); }
+function nextSong(){ current=(current+1)%songs.length; loadSong(); player.play().catch(()=>{}); }
+function prevSong(){ current=(current-1+songs.length)%songs.length; loadSong(); player.play().catch(()=>{}); }
+function toggle(){ if(player.paused){ player.play().catch(()=>{}); }else{ player.pause(); } }
+
+player.addEventListener("timeupdate",()=>{
+  if(player.duration){
+    document.getElementById("fill").style.width=(player.currentTime/player.duration)*100+"%";
+    document.querySelector('.bar').setAttribute('aria-valuenow', Math.floor((player.currentTime/player.duration)*100));
+  }
+});
+player.addEventListener("ended",nextSong);
+loadSong();
+
+/* Twinkling star field (created on demand so intro can show first) */
+function createStar(){
+  const s=document.createElement("div");
+  s.className="star";
+  s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  s.style.left=(Math.random()*100)+"vw";
+  s.style.top=(-(10+Math.random()*10))+"vh";
+  s.style.fontSize=(8+Math.random()*26)+"px";
+  s.style.opacity = (0.06 + Math.random()*0.9).toFixed(2);
+  s.style.animationDuration=(7+Math.random()*12)+"s";
+  document.body.appendChild(s);
+  // remove after fall finishes to avoid DOM bloat
+  setTimeout(()=>s.remove(), (parseFloat(s.style.animationDuration)||10)*1000 + 2000);
+}
+
+function startStarField(){
+  if(starsCreated) return;
+  starsCreated = true;
+  // create initial burst
+  for(let i=0;i<STAR_COUNT;i++) createStar();
+  // keep spawning gently
+  starInterval = setInterval(()=> {
+    if(Math.random() < 0.6) createStar();
+  }, 900);
+}
+
+/* Shooting stars occasionally */
+function spawnShootingStar(){
+  const s=document.createElement("div");
+  s.className="shooting";
+  // random start position near upper-right to simulate arc
+  const startLeft = 60 + Math.random()*30;
+  const startTop = 5 + Math.random()*20;
+  s.style.left = startLeft + "vw";
+  s.style.top = startTop + "vh";
+  s.style.width = (1 + Math.random()*3) + "px";
+  const dur = 800 + Math.random()*1000;
+  s.style.animationDuration = dur + "ms";
+  document.body.appendChild(s);
+  setTimeout(()=> s.remove(), dur+200);
+}
+
+/* Occasionally spawn shooting stars */
+setInterval(()=> { if(starsCreated && Math.random() < 0.18) spawnShootingStar(); }, 1200);
+
+/* Rotating inspirational quotes */
+const quotes = [
+  "Quiet nights hold honest conversations.",
+  "Connections find their own time.",
+  "Music remembers what words cannot say.",
+  "Some stories arrive under moonlight.",
+  "Choose someone who chooses you every day."
+];
+let qi = 0;
+function rotateQuote(){
+  quoteEl.classList.remove('quote');
+  void quoteEl.offsetWidth;
+  quoteEl.classList.add('quote');
+  quoteEl.textContent = quotes[qi];
+  qi = (qi+1) % quotes.length;
+}
+setInterval(rotateQuote, 8000);
+rotateQuote();
+
+/* Clocks (unchanged logic but kept here) */
+function updateClocks(){
+  const now=new Date();
+  const india = now.toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true});
+  const canada = now.toLocaleTimeString("en-CA",{timeZone:"America/Vancouver",hour:"numeric",minute:"2-digit",hour12:true});
+  document.getElementById("india").innerHTML="🇮🇳 India: "+india;
+  document.getElementById("canada").innerHTML="🇨🇦 Canada: "+canada;
+}
+setInterval(updateClocks,1000);
+updateClocks();
+
+/* Secret popup logic */
+function openSecret(){
+  // IST reliable time
+  const indiaTime=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Kolkata"}));
+  const sunday = indiaTime.getDay()===0 && indiaTime.getHours()>=3 && indiaTime.getHours()<6;
+  popup.style.display="flex";
+  popup.setAttribute('aria-hidden','false');
+  if(sunday){
+    secretText.innerHTML=`
+      Hey Eemanjot 🖤<br><br>
+      This message only appears on Sunday mornings.<br><br>
+      Darshmehar Singh beside Eemanjot Kaur<br>
+      still sounds beautiful.<br><br>
+      Maybe some connections take the long route
+      before finding the right place. If you are with me would be looking for some red sign on your IG Story after Sunday.. Love to see over there . bcuz Laal rang looks good on you!!
+    `;
+  } else {
+    secretText.innerHTML=`The real message only appears on Sunday between 3AM and 6AM IST 🌙`;
+  }
+}
+function closeSecret(){
+  popup.style.display="none";
+  popup.setAttribute('aria-hidden','true');
+}
+
+/* Intro Play behavior: start star field, unlock audio */
+introPlay.addEventListener('click', ()=> {
+  intro.style.display = 'none';
+  startStarField();
+  // try to play to unlock autoplay policies
+  player.play().catch(()=>{});
+});
+
+/* Fallback: first body interaction hides intro (for keyboard/tap) */
+document.body.addEventListener("click", (e)=>{
+  // if intro is still visible and click outside of controls, remove intro
+  if(intro && intro.style.display !== 'none'){
+    intro.style.display = 'none';
+    startStarField();
+  }
+  // allow audio play attempt once
+  player.play().catch(()=>{});
+},{once:true});
+
+/* ensure initial star field created if user bypassed intro or script loaded after interaction */
+window.addEventListener('load', ()=> {
+  // do not auto-start starfield until user interacts; keep cinematic intro visible
+});
+
+/* Small accessibility: allow closing popup with Escape */
+window.addEventListener('keydown', (e)=> {
+  if(e.key === "Escape")
