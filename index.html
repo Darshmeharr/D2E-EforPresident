@@ -3,143 +3,444 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darshmehar × Eemanjot ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Darshmehar × Eemanjot ❤️ | Our Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-font-family:Poppins,sans-serif;
-background:linear-gradient(135deg,#070b1a,#13002d,#240046);
-overflow:hidden;color:#fff;min-height:100vh}
-.aurora{position:fixed;inset:0;background:
-radial-gradient(circle at 20% 30%,rgba(255,0,255,.15),transparent 40%),
+font-family:'Poppins',sans-serif;
+background:linear-gradient(-45deg,#050816,#120024,#240046,#001d3d);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+overflow-x:hidden;
+color:white;
+min-height:100vh;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.aurora{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%,rgba(255,0,255,.18),transparent 40%),
 radial-gradient(circle at 80% 70%,rgba(0,255,255,.12),transparent 40%);
-filter:blur(80px);animation:move 15s infinite alternate}
-@keyframes move{from{transform:translateX(-80px)}to{transform:translateX(80px)}}
-.moon{position:fixed;top:40px;right:50px;width:150px;height:150px;border-radius:50%;
+filter:blur(80px);
+z-index:-1;
+}
+
+.moon{
+position:fixed;
+top:40px;
+right:50px;
+width:150px;
+height:150px;
+border-radius:50%;
 background:radial-gradient(circle at 30% 30%,#fff,#f3d9ff);
-box-shadow:0 0 40px #ff00ff,0 0 90px rgba(255,0,255,.5)}
-.star{position:fixed;background:#fff;border-radius:50%;animation:twinkle 4s infinite}
-@keyframes twinkle{50%{opacity:.3;transform:scale(1.5)}}
-.container{display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;position:relative;z-index:2}
-.card{max-width:850px;width:100%;padding:50px;border-radius:30px;text-align:center;
-background:rgba(255,255,255,.08);backdrop-filter:blur(20px)}
-h1{font-family:Great Vibes,cursive;font-size:5rem}
-.quote{margin:20px 0;font-size:1.2rem;min-height:60px}
-.love-meter{height:16px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin:20px auto;max-width:350px}
-.fill{height:100%;width:100%;background:linear-gradient(90deg,#ff4d6d,#ff00ff,#ffd700)}
-.clock-wrap{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:25px 0}
-.clock{padding:15px 20px;border-radius:18px;background:rgba(255,255,255,.08)}
-.heart-btn{margin-top:25px;width:90px;height:90px;border:none;border-radius:50%;font-size:2rem;cursor:pointer;background:#ff00aa;color:#fff}
-.popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);justify-content:center;align-items:center;z-index:10}
-.popup-box{background:#1b0033;padding:40px;border-radius:25px;max-width:600px;text-align:center}
-.float-heart{position:fixed;font-size:24px;pointer-events:none;animation:rise 8s linear forwards}
-@keyframes rise{from{transform:translateY(100vh)}to{transform:translateY(-100px);opacity:0}}
-.music{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;border:none;background:#ff00aa;color:#fff;font-size:1.4rem}
-@media(max-width:768px){h1{font-size:3rem}.card{padding:25px}}
+box-shadow:0 0 40px #ff99ff,0 0 100px rgba(255,0,255,.5);
+}
+
+.star{
+position:fixed;
+background:white;
+border-radius:50%;
+animation:twinkle 4s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.3;
+transform:scale(1.6);
+}
+}
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:900px;
+padding:50px;
+border-radius:35px;
+text-align:center;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+box-shadow:0 0 40px rgba(255,255,255,.1);
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:5rem;
+margin-bottom:10px;
+}
+
+.subtitle{
+opacity:.9;
+font-size:1.1rem;
+margin-bottom:20px;
+}
+
+.quote{
+font-size:1.3rem;
+min-height:70px;
+margin:20px 0;
+}
+
+.love-meter{
+height:18px;
+border-radius:30px;
+overflow:hidden;
+background:rgba(255,255,255,.1);
+margin:25px auto;
+max-width:400px;
+}
+
+.fill{
+height:100%;
+width:100%;
+background:linear-gradient(90deg,#ff4d6d,#ff00ff,#ffd700);
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{filter:brightness(1)}
+to{filter:brightness(1.5)}
+}
+
+.clock-wrap{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.clock{
+padding:15px 25px;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+}
+
+.daily-card{
+margin-top:25px;
+padding:20px;
+border-radius:20px;
+background:rgba(255,255,255,.07);
+}
+
+.daily-card h3{
+margin-bottom:10px;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:12px 20px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff00aa,#ff5e62);
+color:white;
+font-weight:bold;
+}
+
+.float-heart{
+position:fixed;
+font-size:24px;
+pointer-events:none;
+animation:rise 8s linear forwards;
+}
+
+@keyframes rise{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.popup-box{
+max-width:600px;
+background:#1b0033;
+padding:35px;
+border-radius:25px;
+text-align:center;
+}
+
+.popup-box h2{
+margin-bottom:15px;
+}
+
+.footer{
+margin-top:30px;
+opacity:.8;
+font-size:.9rem;
+}
+
+@media(max-width:768px){
+h1{
+font-size:3rem;
+}
+.card{
+padding:25px;
+}
+}
 </style>
 </head>
-<body>
 <div class="aurora"></div>
 <div class="moon"></div>
-
 <div class="container">
 <div class="card">
-<h1>Darshmehar × Eemanjot</h1>
-<p>Two Hearts • One Universe ❤️</p>
-
-<div class="love-meter"><div class="fill"></div></div>
+<h1>✨ Darshmehar ❤ Eemanjot ✨</h1>
+<p class="subtitle">
+Written among the stars, protected by the moon, remembered every day.
+</p>
+<div class="love-meter">
+<div class="fill"></div>
+</div>
 <p>Connection Strength: ∞%</p>
-
-<div id="quote" class="quote">Every star reminds me of you ❤️</div>
-
+<div class="quote" id="quote"></div>
+<div class="daily-card">
+<h3>💌 Today's Reminder</h3>
+<p id="dailyLove"></p>
+</div>
 <div class="clock-wrap">
 <div class="clock" id="india"></div>
 <div class="clock" id="canada"></div>
 </div>
-
+<br>
 <p>❤️ Together for <span id="days"></span> days</p>
-
-<button class="heart-btn" onclick="openLove()">💖</button>
+<div class="controls">
+<button class="btn" onclick="openLove()">💖 Love Letter</button>
+<button class="btn" onclick="toggleMusic()">🎵 Play / Pause</button>
+<button class="btn" onclick="prevSong()">⏮ Previous</button>
+<button class="btn" onclick="nextSong()">⏭ Next</button>
+</div>
+<div class="footer">
+🌙 Every Sunday after 3:00 AM a new weekly message appears.
 </div>
 </div>
-
+</div>
 <div class="popup" id="popup">
 <div class="popup-box">
 <h2>My Favorite Person ❤️</h2>
-<p id="msg"></p><br>
-<button onclick="closeLove()">Close</button>
+<p id="loveMessage"></p>
+<br>
+<button class="btn" onclick="closeLove()">Close</button>
 </div>
 </div>
-
-<button class="music" onclick="toggleMusic()">🎵</button>
-
-<audio id="audio" loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
-
 <script>
-for(let i=0;i<180;i++){
-let s=document.createElement('div');
-s.className='star';
-let z=Math.random()*3+1;
-s.style.width=z+'px';s.style.height=z+'px';
-s.style.left=Math.random()*100+'vw';
-s.style.top=Math.random()*100+'vh';
-document.body.appendChild(s);
+
+/* STARS */
+
+for(let i=0;i<250;i++){
+let star=document.createElement('div');
+star.className='star';
+
+let size=Math.random()*3+1;
+
+star.style.width=size+'px';
+star.style.height=size+'px';
+star.style.left=Math.random()*100+'vw';
+star.style.top=Math.random()*100+'vh';
+
+document.body.appendChild(star);
 }
+
+/* FLOATING HEARTS */
 
 setInterval(()=>{
 let h=document.createElement('div');
-h.className='float-heart';
-h.innerHTML=['❤️','💖','💕','💜'][Math.floor(Math.random()*4)];
-h.style.left=Math.random()*100+'vw';
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),8000);
-},700);
 
-const quotes=[
-'Every star reminds me of you ❤️',
-'Distance means little when someone means everything 💜',
-'In every universe, I would choose you 🌙',
-'You make ordinary moments magical ✨',
-'Our story shines brighter than the stars 💫'
+h.className='float-heart';
+
+h.innerHTML=['❤️','💖','💕','💜','💘'][Math.floor(Math.random()*5)];
+
+h.style.left=Math.random()*100+'vw';
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},8000);
+
+},600);
+
+/* SONG PLAYLIST */
+
+const playlist=[
+"excuses.mp3",
+"obsessed.mp3",
+"sajna.mp3",
+"door.mp3"
 ];
-let q=0;
-setInterval(()=>{
-q=(q+1)%quotes.length;
-document.getElementById('quote').innerText=quotes[q];
-},5000);
+
+let currentSong=0;
+
+const audio=document.getElementById("audio");
+
+function loadSong(index){
+audio.src=playlist[index];
+}
+
+function nextSong(){
+currentSong=(currentSong+1)%playlist.length;
+loadSong(currentSong);
+audio.play();
+playing=true;
+}
+
+function prevSong(){
+currentSong=(currentSong-1+playlist.length)%playlist.length;
+loadSong(currentSong);
+audio.play();
+playing=true;
+}
+
+loadSong(0);
+
+let playing=false;
+
+function toggleMusic(){
+if(playing){
+audio.pause();
+playing=false;
+}else{
+audio.play();
+playing=true;
+}
+}
+
+audio.addEventListener("ended",nextSong);
+
+/* WEEKLY MESSAGE */
+
+const weeklyMessages=[
+"Every week begins with another reason to love you ❤️",
+"Distance cannot measure what my heart feels 🌙",
+"You are still my favorite notification 💌",
+"The stars still carry my wishes to you ✨",
+"Another week, another chapter of us ❤️",
+"You make ordinary moments magical 💖"
+];
+
+function getWeeklyMessage(){
+
+const now=new Date();
+
+const week=Math.floor(
+now.getTime()/(1000*60*60*24*7)
+);
+
+return weeklyMessages[
+week%weeklyMessages.length
+];
+}
+
+document.getElementById("quote").innerText=getWeeklyMessage();
+
+/* DAILY REMINDER */
+
+const reminders=[
+"You are loved more than words can explain ❤️",
+"My favorite future includes you 🌹",
+"Every sunrise feels brighter because of you ☀️",
+"You are the poetry hidden in ordinary days ✨",
+"My heart still chooses you every day 💖",
+"Forever starts with another day beside you ❤️",
+"You are my favorite chapter 🌙"
+];
+
+document.getElementById("dailyLove").innerText=
+reminders[new Date().getDate()%reminders.length];
+
+/* CLOCKS */
 
 function updateClocks(){
+
 const now=new Date();
-india.innerHTML='🇮🇳 India<br>'+now.toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata'});
-canada.innerHTML='🇨🇦 Canada<br>'+now.toLocaleTimeString('en-CA',{timeZone:'America/Vancouver'});
+
+document.getElementById("india").innerHTML=
+"🇮🇳 India<br>"+
+now.toLocaleTimeString('en-IN',{
+timeZone:'Asia/Kolkata'
+});
+
+document.getElementById("canada").innerHTML=
+"🇨🇦 Canada<br>"+
+now.toLocaleTimeString('en-CA',{
+timeZone:'America/Vancouver'
+});
+
 }
-setInterval(updateClocks,1000);updateClocks();
 
-const startDate=new Date('2025-01-01');
-days.innerText=Math.floor((new Date()-startDate)/(1000*60*60*24));
+updateClocks();
 
-const msgs=[
-'You are the calm in my chaos ❤️',
-'You turned distance into something beautiful 💖',
-'My favorite place is wherever you are 💜',
-'The moon shines brighter when I think of you 🌙'
+setInterval(updateClocks,1000);
+
+/* DAY COUNTER */
+
+const startDate=new Date("2025-01-01");
+
+document.getElementById("days").innerText=
+Math.floor(
+(new Date()-startDate)/(1000*60*60*24)
+);
+
+/* LOVE LETTER */
+
+const letters=[
+"You are the calm in my chaos and the light in my darkest nights ❤️",
+"If I could choose again, I would still choose you every single time 💖",
+"The moon, the stars, and every beautiful thing remind me of you 🌙",
+"You turned ordinary days into memories worth keeping forever ✨",
+"In every universe, I would search for you and choose you again 💜"
 ];
 
 function openLove(){
-popup.style.display='flex';
-msg.innerText=msgs[Math.floor(Math.random()*msgs.length)];
-}
-function closeLove(){popup.style.display='none';}
+document.getElementById("popup").style.display="flex";
 
-let playing=false;
-function toggleMusic(){
-const a=document.getElementById('audio');
-if(playing){a.pause();playing=false;}
-else{a.play();playing=true;}
+document.getElementById("loveMessage").innerText=
+letters[Math.floor(Math.random()*letters.length)];
 }
+
+function closeLove(){
+document.getElementById("popup").style.display="none";
+}
+
 </script>
-</body>
 </html>
+:::
