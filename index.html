@@ -3,246 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ✨</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>✨ Enchanted Realms ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:linear-gradient(180deg,#020204,#070b1a,#11182f);
+font-family:'Playfair Display',serif;
+background:linear-gradient(135deg,#0a0e27,#1a0033,#2d1b4e);
 color:white;overflow:hidden;min-height:100vh;
 }
 #intro{
-position:fixed;inset:0;background:radial-gradient(circle,rgba(0,0,0,.8),black);
-display:flex;align-items:center;justify-content:center;
-font-size:2rem;z-index:9999;letter-spacing:3px;
-animation:fadeOut 0.5s ease-out 2.5s forwards;
+position:fixed;inset:0;background:radial-gradient(circle,rgba(138,43,226,.6),rgba(0,0,0,.9));
+display:flex;align-items:center;justify-content:center;flex-direction:column;
+font-size:2.5rem;z-index:9999;letter-spacing:4px;
+animation:fadeOut 0.5s ease-out 3s forwards;
 }
+.intro-text{animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 @keyframes fadeOut{to{opacity:0;pointer-events:none}}
 .sky{position:fixed;inset:0;overflow:hidden}
-.star{position:absolute;background:white;border-radius:50%;animation:twinkle infinite ease-in-out;box-shadow:0 0 10px rgba(255,255,255,0.8)}
-@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.5)}}
+.star{
+position:absolute;background:radial-gradient(circle,#fff,#ffeb3b);
+border-radius:50%;animation:twinkle infinite ease-in-out;
+box-shadow:0 0 20px rgba(255,235,59,0.8),0 0 40px rgba(138,43,226,0.5);
+}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:1;transform:scale(1.5)}}
+.orb{
+position:absolute;border-radius:50%;
+background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8),rgba(138,43,226,.3));
+box-shadow:0 0 30px rgba(138,43,226,0.8),inset -10px -10px 20px rgba(0,0,0,.3);
+animation:float-orb 8s ease-in-out infinite;
+}
+@keyframes float-orb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.1)}}
 .moon{
-position:absolute;top:60px;right:80px;width:130px;height:130px;border-radius:50%;
-background:#fff;box-shadow:0 0 40px #fff,0 0 120px rgba(255,255,255,.5),inset -20px -20px 40px rgba(0,0,0,.3);
-animation:floatMoon 8s ease-in-out infinite;
+position:absolute;top:40px;right:60px;width:180px;height:180px;border-radius:50%;
+background:radial-gradient(circle at 30% 30%,#fff,#e6b3ff);
+box-shadow:0 0 60px #ff00ff,0 0 100px rgba(138,43,226,.7),inset -30px -30px 60px rgba(0,0,0,.4);
+animation:moonGlow 4s ease-in-out infinite;
 }
-@keyframes floatMoon{50%{transform:translateY(-15px)}}
-.shooting{
-position:absolute;width:180px;height:2px;
-background:linear-gradient(to right,#fff,#ffeb3b,transparent);
-transform:rotate(-35deg);
-animation:shoot 3s linear forwards;
-box-shadow:0 0 20px rgba(255,255,255,0.8);
+@keyframes moonGlow{0%,100%{filter:drop-shadow(0 0 30px rgba(255,0,255,0.8))}50%{filter:drop-shadow(0 0 60px rgba(138,43,226,1))}}
+.particle{
+position:absolute;pointer-events:none;
+background:radial-gradient(circle,#ffeb3b,rgba(138,43,226,.5));
+border-radius:50%;box-shadow:0 0 15px rgba(255,235,59,.8);
+animation:drift 15s linear infinite;
 }
-@keyframes shoot{
-from{transform:translate(-200px,-200px) rotate(-35deg);opacity:1}
-to{transform:translate(1500px,900px) rotate(-35deg);opacity:0}
-}
-.constellation{
-position:absolute;width:200px;height:200px;opacity:0.3;
-}
+@keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(100px,-50px)}100%{transform:translate(0,0)}}
 .container{
 position:relative;z-index:5;
 display:flex;align-items:center;justify-content:center;
-min-height:100vh;
+min-height:100vh;padding:20px;
 }
 .card{
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.15);
-border-radius:30px;padding:40px;text-align:center;
-box-shadow:0 0 40px rgba(255,255,255,.08);
-animation:slideUp 0.8s ease-out;
+max-width:900px;width:100%;
+background:rgba(20,10,40,.7);
+backdrop-filter:blur(30px);
+border:2px solid rgba(138,43,226,.5);
+border-radius:40px;padding:50px;text-align:center;
+box-shadow:0 0 60px rgba(138,43,226,.3),inset 0 0 60px rgba(138,43,226,.1);
+animation:slideUp 1s ease-out;
+position:relative;
 }
-@keyframes slideUp{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
-h1{font-family:'Great Vibes',cursive;font-size:5rem;background:linear-gradient(135deg,#fff,#ffeb3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s ease-in-out infinite;letter-spacing:2px}
-@keyframes glow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,235,59,0.5))}50%{filter:drop-shadow(0 0 20px rgba(255,235,59,0.8))}}
-.quote{margin:20px 0;color:#ddd;font-size:1.1rem;line-height:1.8;transition:all 0.5s ease;min-height:1.5em;font-style:italic}
+.card::before{
+content:'';position:absolute;inset:0;border-radius:40px;
+background:linear-gradient(135deg,rgba(138,43,226,.1),rgba(255,0,255,.05));
+pointer-events:none;
+}
+@keyframes slideUp{from{transform:translateY(80px);opacity:0}to{transform:translateY(0);opacity:1}}
+h1{
+font-family:'Great Vibes',cursive;font-size:5.5rem;
+background:linear-gradient(135deg,#ffeb3b,#ff00ff,#00ffff);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+animation:magicGlow 4s ease-in-out infinite;
+letter-spacing:3px;
+text-shadow:0 0 30px rgba(138,43,226,.5);
+}
+@keyframes magicGlow{
+0%,100%{filter:drop-shadow(0 0 15px rgba(138,43,226,0.6))}
+50%{filter:drop-shadow(0 0 30px rgba(255,0,255,1))}
+}
+.subtitle{font-size:1.3rem;color:#ff00ff;margin-top:10px;animation:shimmerText 3s infinite}
+@keyframes shimmerText{0%,100%{opacity:0.7}50%{opacity:1}}
+.quote{
+margin:25px 0;color:#e6b3ff;font-size:1.2rem;line-height:1.9;
+transition:all 0.6s ease;min-height:2em;font-style:italic;
+animation:fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .distance-badge{
-display:inline-block;padding:8px 16px;background:rgba(255,23,68,.15);border:1px solid #ff1744;
-border-radius:20px;font-size:0.9rem;margin:10px 0;color:#ff7090;animation:pulse 2s infinite;
+display:inline-block;padding:12px 20px;
+background:linear-gradient(135deg,rgba(255,0,255,.2),rgba(138,43,226,.2));
+border:2px solid #ff00ff;border-radius:30px;
+font-size:1rem;margin:15px 0;color:#ff00ff;
+animation:pulseMagic 2s infinite;box-shadow:0 0 20px rgba(255,0,255,.3);
 }
-@keyframes pulse{0%,100%{opacity:0.8}50%{opacity:1}}
-.clockWrap{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:20px 0}
+@keyframes pulseMagic{0%,100%{opacity:0.8;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.clockWrap{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:30px 0}
 .clock{
-padding:15px 25px;background:rgba(255,235,59,.08);border:1px solid rgba(255,235,59,.3);
-border-radius:20px;transition:all 0.3s ease;cursor:default;position:relative;
+padding:20px 30px;
+background:linear-gradient(135deg,rgba(138,43,226,.15),rgba(255,0,255,.1));
+border:2px solid rgba(138,43,226,.4);
+border-radius:25px;transition:all 0.4s ease;cursor:default;
+box-shadow:0 0 20px rgba(138,43,226,.2);
 }
-.clock:hover{background:rgba(255,235,59,.15);transform:scale(1.05);box-shadow:0 0 20px rgba(255,235,59,.2)}
-.clock::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:10px solid rgba(255,235,59,.3);opacity:0;transition:opacity 0.3s}
-.clock:hover::before{opacity:1}
+.clock:hover{
+background:linear-gradient(135deg,rgba(138,43,226,.3),rgba(255,0,255,.2));
+transform:scale(1.1);box-shadow:0 0 40px rgba(255,0,255,.5);
+}
 .heart{
-margin-top:25px;font-size:2rem;border:2px solid #ff1744;border-radius:50%;
-width:90px;height:90px;background:rgba(255,23,68,.1);color:#ff1744;cursor:pointer;
-animation:beat 1.6s infinite;transition:all 0.3s ease;position:relative;
+margin-top:30px;font-size:2.5rem;border:3px solid #ff00ff;border-radius:50%;
+width:110px;height:110px;background:rgba(255,0,255,.1);cursor:pointer;
+animation:beatMagic 1.4s infinite;transition:all 0.3s ease;position:relative;
+box-shadow:0 0 30px rgba(255,0,255,.4);
+display:flex;align-items:center;justify-content:center;margin:0 auto;
 }
-.heart:hover{background:rgba(255,23,68,.25);transform:scale(1.1);box-shadow:0 0 30px rgba(255,23,68,.5)}
-.heart::after{content:'';position:absolute;width:100%;height:100%;border-radius:50%;border:2px solid #ff1744;animation:pulse-ring 1.5s infinite;top:0;left:0}
-@keyframes beat{0%{transform:scale(1)}25%{transform:scale(1.2)}50%{transform:scale(1)}}
-@keyframes pulse-ring{0%{transform:scale(1);opacity:1}100%{transform:scale(1.4);opacity:0}}
+.heart:hover{
+background:rgba(255,0,255,.25);transform:scale(1.15);
+box-shadow:0 0 50px rgba(255,0,255,.8);
+}
+@keyframes beatMagic{0%{transform:scale(1)}25%{transform:scale(1.25)}50%{transform:scale(1)}}
 .popup{
-display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);
+display:none;position:fixed;inset:0;
+background:radial-gradient(circle,rgba(0,0,0,.95),rgba(138,43,226,.2));
 align-items:center;justify-content:center;z-index:99;
-animation:fadeIn 0.4s ease-out;backdrop-filter:blur(5px);
+animation:fadeIn 0.5s ease-out;backdrop-filter:blur(10px);
 }
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .popupBox{
-max-width:600px;background:rgba(15,18,32,.95);padding:40px;border-radius:25px;text-align:center;
-border:1px solid rgba(255,235,59,.2);box-shadow:0 0 40px rgba(255,235,59,.1);
-animation:popIn 0.5s ease-out cubic-bezier(0.34, 1.56, 0.64, 1);
+max-width:700px;
+background:linear-gradient(135deg,rgba(20,10,40,.98),rgba(50,0,100,.95));
+padding:50px;border-radius:40px;text-align:center;
+border:2px solid rgba(138,43,226,.5);
+box-shadow:0 0 80px rgba(138,43,226,.4),inset 0 0 40px rgba(255,0,255,.1);
+animation:popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-@keyframes popIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
-.popupBox h2{font-family:'Great Vibes',cursive;font-size:2.5rem;margin-bottom:20px;background:linear-gradient(135deg,#fff,#ffeb3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.popupBox p{line-height:1.8;color:#ddd;margin:15px 0;font-style:italic}
-#specialMsg{display:block;margin:15px 0;font-size:1.2rem;color:#ffeb3b;font-weight:bold;animation:shimmer 2s infinite}
-@keyframes shimmer{0%,100%{opacity:0.7}50%{opacity:1}}
-button{padding:12px 18px;border:2px solid #ffeb3b;border-radius:25px;cursor:pointer;background:transparent;color:white;font-weight:bold;transition:all 0.3s ease;font-family:'Playfair Display',serif;position:relative}
-button:hover{background:#ffeb3b;color:#020204;transform:scale(1.05);box-shadow:0 0 15px rgba(255,235,59,.5)}
-button:active{transform:scale(0.98)}
-.hearts-float{position:absolute;font-size:1.5rem;pointer-events:none;animation:floatUp 3s ease-out forwards}
-@keyframes floatUp{
-0%{transform:translateY(0) scale(1);opacity:1}
-100%{transform:translateY(-150px) scale(0);opacity:0}
+@keyframes popIn{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+.popupBox h2{
+font-family:'Great Vibes',cursive;font-size:3rem;margin-bottom:25px;
+background:linear-gradient(135deg,#ffeb3b,#ff00ff);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
+.popupBox p{
+line-height:2;color:#e6b3ff;margin:20px 0;font-size:1.1rem;
+}
+#specialMsg{
+display:block;margin:20px 0;font-size:1.4rem;color:#00ffff;
+font-weight:bold;animation:shimmer 2s infinite;
+}
+@keyframes shimmer{0%,100%{opacity:0.7;text-shadow:0 0 10px rgba(0,255,255,.5)}50%{opacity:1;text-shadow:0 0 30px rgba(138,43,226,1)}}
+button{
+padding:14px 28px;border:2px solid #ff00ff;border-radius:30px;
+cursor:pointer;background:rgba(138,43,226,.1);color:#ff00ff;
+font-weight:bold;transition:all 0.3s ease;font-family:'Playfair Display',serif;
+font-size:1rem;box-shadow:0 0 20px rgba(138,43,226,.3);
+}
+button:hover{
+background:#ff00ff;color:#0a0e27;transform:scale(1.08);
+box-shadow:0 0 40px rgba(255,0,255,.8);
+}
+button:active{transform:scale(0.95)}
+.music-toggle{
+position:fixed;bottom:30px;right:30px;z-index:100;
+width:60px;height:60px;border-radius:50%;
+background:rgba(138,43,226,.3);border:2px solid #ff00ff;
+cursor:pointer;font-size:1.5rem;display:flex;
+align-items:center;justify-content:center;
+box-shadow:0 0 30px rgba(138,43,226,.5);
+transition:all 0.3s ease;
+}
+.music-toggle:hover{
+background:rgba(138,43,226,.6);transform:scale(1.1);
+box-shadow:0 0 50px rgba(255,0,255,.8);
+}
+.music-note{animation:dance 0.6s ease-in-out infinite}
+@keyframes dance{0%,100%{transform:rotate(0)}50%{transform:rotate(20deg)}}
 @media(max-width:768px){
-h1{font-size:3rem}
-.card{padding:25px}
-.popupBox{padding:25px}
-.clockWrap{gap:15px}
+h1{font-size:3.5rem}
+.card{padding:30px}
+.popupBox{padding:30px}
+.clockWrap{gap:20px}
 }
 </style>
 </head>
 <body>
 
-<div id="intro">✨ Finding The Right Star... ✨</div>
+<div id="intro">
+<div class="intro-text">✨ Enchanted Realms ✨</div>
+</div>
 
-<div class="sky">
+<div class="sky" id="sky">
 <div class="moon"></div>
 </div>
 
 <div class="container">
 <div class="card">
 <h1>Darshmehar × Eemanjot</h1>
+<div class="subtitle">Two Souls Across Dimensions</div>
 
-<div class="distance-badge">📍 7,463 km apart</div>
+<div class="distance-badge">🌍 7,463 km • Connected by Magic 🌍</div>
 
 <p class="quote" id="quote">
-Some people arrive unexpectedly and become impossible to forget.
+In a realm where distance fades, two hearts find their way...
 </p>
 
 <div class="clockWrap">
-<div class="clock"><span id="clock1">00:00</span></div>
-<div class="clock"><span id="clock2">00:00</span></div>
+<div class="clock" id="india">🇮🇳 India</div>
+<div class="clock" id="canada">🇨🇦 Canada</div>
 </div>
 
-<p>
-Some stories begin with a hello.<br>
-Some begin with destiny.
+<p class="quote">
+Across the enchanted skies,<br>
+Two constellations intertwine,<br>
+What fate weaves cannot be undone.
 </p>
 
-<button class="heart" onclick="openSecret()" title="Click me">💫</button>
+<button class="heart" onclick="openSecret()">💫</button>
 </div>
 </div>
 
 <div class="popup" id="popup">
 <div class="popupBox">
-<h2>✨ For You ✨</h2>
+<h2>✨ The Prophecy ✨</h2>
 <p>
-Every shooting star crossing this sky carries a wish.<br><br>
-Maybe some connections take the long route before finding the right place.<br><br>
+In the cosmic dance of stars and time,<br>
+Two souls destined to align.<br><br>
 <span id="specialMsg"></span>
+<br><br>
+Through magic woven in every moment,<br>
+This connection transcends all distance.
 </p><br>
-<button onclick="closeSecret()">✨ Close ✨</button>
+<button onclick="closeSecret()">Return to Realm</button>
 </div>
 </div>
 
+<button class="music-toggle" onclick="toggleMusic()" title="Toggle Magic Music">
+<span class="music-note" id="musicNote">🎵</span>
+</button>
+
+<audio id="magicAudio" loop volume="0.3">
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-function createStars(){
-const sky=document.querySelector(".sky");
-for(let i=0;i<50;i++){
+const magicAudio=document.getElementById("magicAudio");
+const musicNote=document.getElementById("musicNote");
+let isPlaying=false;
+
+function toggleMusic(){
+if(isPlaying){
+magicAudio.pause();
+musicNote.textContent="🔇";
+isPlaying=false;
+}else{
+magicAudio.play();
+musicNote.textContent="🎵";
+isPlaying=true;
+}
+}
+
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+},3500);
+
+const sky=document.getElementById("sky");
+
+// Enhanced stars with glow
+for(let i=0;i<250;i++){
 const s=document.createElement("div");
 s.className="star";
-const size=Math.random()*3;
+const size=Math.random()*4+0.5;
 s.style.width=size+"px";
 s.style.height=size+"px";
 s.style.left=Math.random()*100+"vw";
 s.style.top=Math.random()*100+"vh";
-s.style.animationDuration=(2+Math.random()*5)+"s";
-s.style.animationDelay=Math.random()*2+"s";
+s.style.animationDuration=(3+Math.random()*6)+"s";
+s.style.animationDelay=Math.random()*3+"s";
 sky.appendChild(s);
 }
+
+// Magical orbs
+for(let i=0;i<5;i++){
+const orb=document.createElement("div");
+orb.className="orb";
+const size=Math.random()*100+50;
+orb.style.width=size+"px";
+orb.style.height=size+"px";
+orb.style.left=Math.random()*100+"vw";
+orb.style.top=Math.random()*100+"vh";
+orb.style.animationDelay=Math.random()*4+"s";
+sky.appendChild(orb);
 }
 
-function createShooting(){
-const sky=document.querySelector(".sky");
-setInterval(()=>{
-const s=document.createElement("div");
-s.className="shooting";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*60+"vh";
-sky.appendChild(s);
-setTimeout(()=>s.remove(),3000);
-},2000);
+// Floating particles
+for(let i=0;i<30;i++){
+const particle=document.createElement("div");
+particle.className="particle";
+const size=Math.random()*6+2;
+particle.style.width=size+"px";
+particle.style.height=size+"px";
+particle.style.left=Math.random()*100+"vw";
+particle.style.top=Math.random()*100+"vh";
+particle.style.animationDelay=Math.random()*15+"s";
+particle.style.animationDuration=(10+Math.random()*20)+"s";
+sky.appendChild(particle);
 }
 
-const quotes=[
-"Distance changes places, not feelings.",
-"Some people feel like destiny at 3AM.",
-"The moon knows every secret conversation.",
-"Some stories begin somewhere between fate and choice.",
-"Two souls, one sky, infinite possibilities.",
-"Time zones can't measure what we share.",
-"You're my favorite hello and my hardest goodbye.",
-"In every timeline, I choose you."
+// Enhanced shooting stars with trails
+function magicShootingStar(){
+const st=document.createElement("div");
+st.className="shooting";
+st.style.top=Math.random()*50+"vh";
+st.style.left="-200px";
+st.style.background="linear-gradient(to right,#ff00ff,#00ffff,transparent)";
+st.style.boxShadow="0 0 30px rgba(255,0,255,0.8)";
+sky.appendChild(st);
+setTimeout(()=>st.remove(),3000);
+}
+setInterval(magicShootingStar,4000);
+
+const prophecies=[
+"In parallel worlds, our souls recognize each other.",
+"Distance is but a test for infinite love.",
+"The stars whispered your name before we met.",
+"Across galaxies, we were always meant to be.",
+"Time zones cannot measure what transcends time.",
+"Two pieces of one cosmic puzzle.",
+"In every universe, I'd choose you again.",
+"Magic brought us together, love keeps us whole.",
+"Fate wrote our story in constellation light.",
+"Our connection defies all earthly dimensions."
 ];
 
-let currentQuote=0;
+let currentProphecy=0;
 setInterval(()=>{
 const quote=document.getElementById("quote");
 quote.style.opacity="0";
 setTimeout(()=>{
-currentQuote=(currentQuote+1)%quotes.length;
-quote.innerText=quotes[currentQuote];
+currentProphecy=(currentProphecy+1)%prophecies.length;
+quote.innerText=prophecies[currentProphecy];
 quote.style.opacity="1";
-},250);
-},6000);
+},300);
+},7000);
 
 function updateClocks(){
 const now=new Date();
-const utc1=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
-const utc2=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
-document.getElementById("clock1").innerText=utc1.toLocaleTimeString();
-document.getElementById("clock2").innerText=utc2.toLocaleTimeString();
+document.getElementById("india").innerHTML="🇮🇳 India<br>"+
+now.toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata"});
+
+document.getElementById("canada").innerHTML="🇨🇦 Canada<br>"+
+now.toLocaleTimeString("en-CA",{timeZone:"America/Vancouver"});
 }
-createStars();
-createShooting();
 setInterval(updateClocks,1000);
 updateClocks();
 
 function openSecret(){
 document.getElementById("popup").style.display="flex";
-const messages=[
-"You found it 💛",
-"Every moment with you matters ✨",
-"Distance is just a number 🌍",
-"You mean everything 💫",
-"My heart lives where you are 💕",
-"Forever starts now 🌙"
+const spellMessages=[
+"You've awakened the magic ✨",
+"Our souls are eternally linked 💜",
+"Infinity tastes like you 🌌",
+"In this realm and all others 👑",
+"Magic was always you 🔮",
+"Destiny recognized destiny 💫"
 ];
-document.getElementById("specialMsg").innerText=messages[Math.floor(Math.random()*messages.length)];
-createHeartFloats();
+document.getElementById("specialMsg").innerText=spellMessages[Math.floor(Math.random()*spellMessages.length)];
+createMagicFloats();
 }
 
-function createHeartFloats(){
-for(let i=0;i<5;i++){
+function createMagicFloats(){
+const spells=["💜","✨","🌟","💫","🔮"];
+for(let i=0;i<8;i++){
 setTimeout(()=>{
-const heart=document.createElement("div");
-heart.className="hearts-float";
-heart.innerHTML="💕";
-heart.style.left=Math.random()*100+"%";
-heart.style.top="50%";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),3000);
-},i*100);
+const magic=document.createElement("div");
+magic.className="hearts-float";
+magic.innerHTML=spells[Math.floor(Math.random()*spells.length)];
+magic.style.left=Math.random()*100+"%";
+magic.style.top="50%";
+magic.style.fontSize="2rem";
+document.body.appendChild(magic);
+setTimeout(()=>magic.remove(),3000);
+},i*80);
 }
 }
 
@@ -250,5 +389,6 @@ function closeSecret(){
 document.getElementById("popup").style.display="none";
 }
 </script>
+
 </body>
 </html>
