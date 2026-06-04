@@ -9,16 +9,16 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #070b1a, #13002d, #240046);
+    background: linear-gradient(135deg, #060214, #110224, #210435);
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
 #intro {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle, rgba(0,0,0,.8), black);
+    background: radial-gradient(circle, rgba(0,0,0,.85), black);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,16 +45,16 @@ body {
 
 .moon {
     position: absolute;
-    top: 60px;
-    right: 80px;
-    width: 130px;
-    height: 130px;
+    top: 40px;
+    right: 50px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 0 40px #fff, 0 0 120px rgba(255,255,255,.5), inset -20px -20px 40px rgba(0,0,0,.3);
+    box-shadow: 0 0 40px #fff, 0 0 120px rgba(255,235,59,.4), inset -15px -15px 30px rgba(0,0,0,.3);
     animation: floatMoon 8s ease-in-out infinite;
 }
-@keyframes floatMoon { 50% { transform: translateY(-15px); } }
+@keyframes floatMoon { 50% { transform: translateY(-12px); } }
 
 .shooting {
     position: absolute;
@@ -63,56 +63,69 @@ body {
     background: linear-gradient(to right, #fff, #ffeb3b, transparent);
     transform: rotate(-35deg);
     animation: shoot 3s linear forwards;
-    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    box-shadow: 0 0 20px rgba(255,235,59,0.5);
 }
 @keyframes shoot {
     from { transform: translate(-200px, -200px) rotate(-35deg); opacity: 1; }
-    to { transform: translate(1500px, 900px) rotate(-35deg); opacity: 0; }
+    to { transform: translate(1600px, 1000px) rotate(-35deg); opacity: 0; }
 }
 
 .container {
     position: relative;
     z-index: 5;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 40px 20px;
+    gap: 30px;
 }
 
 .card {
-    max-width: 650px;
+    max-width: 680px;
     width: 100%;
-    background: rgba(255, 255, 255, .05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255, 255, 255, .03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 30px;
     padding: 40px;
     text-align: center;
-    box-shadow: 0 0 40px rgba(255,255,255,.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     animation: slideUp 0.8s ease-out;
 }
-@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
 h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 5rem;
-    background: linear-gradient(135deg, #fff, #ffeb3b);
+    font-size: 4.8rem;
+    background: linear-gradient(135deg, #fff, #ffeb3b, #ff7090);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glow 3s ease-in-out infinite;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 @keyframes glow {
-    0%, 100% { filter: drop-shadow(0 0 10px rgba(255,235,59,0.5)); }
-    50% { filter: drop-shadow(0 0 20px rgba(255,235,59,0.8)); }
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(255,235,59,0.4)); }
+    50% { filter: drop-shadow(0 0 20px rgba(255,112,144,0.6)); }
+}
+
+.distance-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 23, 68, .12);
+    border: 1px solid rgba(255, 23, 68, 0.4);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 12px 0;
+    color: #ff7090;
+    letter-spacing: 1px;
 }
 
 .quote {
     margin: 20px 0;
-    color: #ddd;
+    color: #e2d9f3;
     font-size: 1.1rem;
     line-height: 1.8;
     transition: all 0.5s ease;
@@ -123,118 +136,174 @@ h1 {
     justify-content: center;
 }
 
-.distance-badge {
-    display: inline-block;
-    padding: 8px 16px;
-    background: rgba(255, 23, 68, .15);
-    border: 1px solid #ff1744;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    margin: 10px 0 20px 0;
-    color: #ff7090;
-    animation: pulse 2s infinite;
-}
-@keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
-
 .clockWrap {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin: 25px 0;
+    margin: 20px 0;
 }
 .clock {
-    padding: 15px 25px;
-    background: rgba(255, 235, 59, .08);
-    border: 1px solid rgba(255, 235, 59, .3);
-    border-radius: 20px;
+    padding: 12px 22px;
+    background: rgba(255, 235, 59, .04);
+    border: 1px solid rgba(255, 235, 59, .2);
+    border-radius: 18px;
     transition: all 0.3s ease;
-    cursor: default;
-    position: relative;
-    min-width: 150px;
+    min-width: 160px;
+}
+.clock span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 4px;
+    color: #ffeb3b;
 }
 .clock:hover {
-    background: rgba(255, 235, 59, .15);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 235, 59, .2);
+    background: rgba(255, 235, 59, .1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 235, 59, .15);
 }
-.clock::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 10px solid rgba(255, 235, 59, .3);
+
+/* Jukebox Audio Station */
+.jukebox {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 20px;
+    margin-top: 10px;
+}
+.jukebox h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff7090;
+    margin-bottom: 15px;
+}
+.track-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.track-btn {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.track-btn:hover {
+    background: rgba(255, 235, 59, 0.1);
+    border-color: #ffeb3b;
+}
+.track-btn.active {
+    background: linear-gradient(135deg, #ff4d6d, #f72585);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(247, 37, 133, 0.4);
+}
+
+/* Dynamic Visualizer Wave */
+.visualizer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 20px;
+    margin-top: 15px;
     opacity: 0;
     transition: opacity 0.3s;
 }
-.clock:hover::before { opacity: 1; }
+.visualizer.playing { opacity: 1; }
+.bar {
+    width: 3px;
+    height: 100%;
+    background: #ff7090;
+    border-radius: 2px;
+}
+.visualizer.playing .bar:nth-child(odd) { animation: bounce 0.5s ease-in-out infinite alternate; }
+.visualizer.playing .bar:nth-child(even) { animation: bounce 0.8s ease-in-out infinite alternate-reverse; }
+@keyframes bounce { from { height: 4px; } to { height: 20px; } }
+
+/* Sunday Dynamic Vault */
+.sunday-vault {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 77, 109, 0.03);
+    border: 1px dashed rgba(255, 77, 109, 0.3);
+    border-radius: 20px;
+}
+.vault-header {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #ff7090;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.vault-content {
+    font-size: 1rem;
+    font-style: italic;
+    color: #e0d5eb;
+}
+.countdown-timer {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #ffeb3b;
+    margin-top: 5px;
+}
 
 .heart {
     margin-top: 25px;
     font-size: 2rem;
     border: 2px solid #ff1744;
     border-radius: 50%;
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     background: rgba(255, 23, 68, .1);
     color: #ff1744;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     outline: none;
+    position: relative;
 }
 .heart:hover {
     background: rgba(255, 23, 68, .25);
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 23, 68, .5);
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 23, 68, .4);
 }
-.heart::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid #ff1744;
-    animation: pulse-ring 1.5s infinite;
-    top: 0;
-    left: 0;
-}
-.heart-icon {
-    animation: beat 1.6s infinite;
-    display: inline-block;
-}
-@keyframes beat { 0% { transform: scale(1); } 25% { transform: scale(1.2); } 50% { transform: scale(1); } }
-@keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.4); opacity: 0; } }
+.heart-icon { animation: beat 1.6s infinite; display: inline-block; }
+@keyframes beat { 0%, 50%, 100% { transform: scale(1); } 25% { transform: scale(1.2); } }
 
+/* Popups and Floaters */
 .popup {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .92);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, .94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     align-items: center;
     justify-content: center;
     z-index: 99;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
-.popup.active {
-    display: flex;
-    opacity: 1;
-}
+.popup.active { display: flex; opacity: 1; }
 .popupBox {
-    max-width: 600px;
+    max-width: 550px;
     width: 90%;
-    background: rgba(15, 18, 32, .95);
+    background: #0d061a;
     padding: 40px;
     border-radius: 25px;
     text-align: center;
@@ -243,31 +312,21 @@ h1 {
     transform: scale(0.8);
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.popup.active .popupBox {
-    transform: scale(1);
-}
+.popup.active .popupBox { transform: scale(1); }
 .popupBox h2 {
     font-family: 'Great Vibes', cursive;
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     background: linear-gradient(135deg, #fff, #ffeb3b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.popupBox p { line-height: 1.8; color: #ddd; margin: 15px 0; font-style: italic; font-size: 1.1rem;}
+.popupBox p { line-height: 1.8; color: #ddd; font-style: italic; font-size: 1.05rem; }
 
-#specialMsg {
-    display: block;
-    margin: 15px 0;
-    font-size: 1.3rem;
-    color: #ffeb3b;
-    font-weight: bold;
-    animation: shimmer 2s infinite;
-}
-@keyframes shimmer { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+#specialMsg { display: block; margin: 15px 0; font-size: 1.25rem; color: #ffeb3b; font-weight: bold; }
 
 .close-btn {
-    padding: 12px 28px;
+    padding: 10px 26px;
     border: 2px solid #ffeb3b;
     border-radius: 25px;
     cursor: pointer;
@@ -275,18 +334,9 @@ h1 {
     color: white;
     font-weight: bold;
     transition: all 0.3s ease;
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    outline: none;
     margin-top: 15px;
 }
-.close-btn:hover {
-    background: #ffeb3b;
-    color: #020204;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 235, 59, .5);
-}
-.close-btn:active { transform: scale(0.98); }
+.close-btn:hover { background: #ffeb3b; color: #020204; }
 
 .hearts-float {
     position: absolute;
@@ -297,15 +347,14 @@ h1 {
 }
 @keyframes floatUp {
     0% { transform: translateY(0) scale(0.8); opacity: 1; }
-    100% { transform: translateY(-200px) scale(0); opacity: 0; }
+    100% { transform: translateY(-220px) scale(0); opacity: 0; }
 }
 
 @media(max-width:768px){
-    h1 { font-size: 3.5rem; }
-    .card { padding: 30px 20px; }
-    .popupBox { padding: 25px; }
-    .clockWrap { gap: 15px; }
-    .moon { width: 90px; height: 90px; top: 30px; right: 30px; }
+    h1 { font-size: 3.4rem; }
+    .card { padding: 30px 15px; }
+    .track-list { grid-template-columns: 1fr; }
+    .moon { width: 80px; height: 80px; top: 20px; right: 20px; }
 }
 </style>
 </head>
@@ -325,8 +374,29 @@ h1 {
         <p class="quote" id="quote">Some people arrive unexpectedly and become impossible to forget.</p>
         
         <div class="clockWrap">
-            <div class="clock" id="india">🇮🇳 India<br><span id="time-in">00:00:00</span></div>
-            <div class="clock" id="canada">🇨🇦 Canada<br><span id="time-ca">00:00:00</span></div>
+            <div class="clock">🇮🇳 India<br><span id="time-in">00:00:00</span></div>
+            <div class="clock">🇨🇦 Canada<br><span id="time-ca">00:00:00</span></div>
+        </div>
+
+        <!-- Custom Jukebox Playlist System -->
+        <div class="jukebox">
+            <h3>🎵 Cosmic Playlist</h3>
+            <div class="track-list">
+                <button class="track-btn" onclick="playTrack('door.mp3', this)">🚪 Door</button>
+                <button class="track-btn" onclick="playTrack('sajna.mp3', this)">🌹 Sajna</button>
+                <button class="track-btn" onclick="playTrack('obsessed.mp3', this)">✨ Obsessed</button>
+                <button class="track-btn" onclick="playTrack('excuses.mp3', this)">💫 Excuses</button>
+            </div>
+            <div class="visualizer" id="visualizer">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+        </div>
+
+        <!-- Sunday Message Vault Module -->
+        <div class="sunday-vault" id="sundayVault">
+            <div class="vault-header" id="vaultHeader">🔒 Sunday Message Capsule</div>
+            <div class="vault-content" id="vaultContent">Loading secret dynamic updates...</div>
         </div>
 
         <button class="heart" onclick="openSecret()" title="Click me"><span class="heart-icon">💫</span></button>
@@ -345,11 +415,16 @@ h1 {
     </div>
 </div>
 
+<!-- Unified Shared Audio Component -->
+<audio id="mainAudio" loop></audio>
+
 <script>
 const sky = document.getElementById("sky");
+const mainAudio = document.getElementById("mainAudio");
+const viz = document.getElementById("visualizer");
 
 // Starfield Generator
-const starCount = 120;
+const starCount = 110;
 for(let i = 0; i < starCount; i++){
     let s = document.createElement('div');
     s.className = 'star';
@@ -363,19 +438,82 @@ for(let i = 0; i < starCount; i++){
     sky.appendChild(s);
 }
 
-// Shooting Star loop engine
+// Shooting Star Animation Triggers
 function triggerShootingStar() {
     let star = document.createElement("div");
     star.className = "shooting";
-    star.style.top = Math.random() * 30 + "vh";
-    star.style.left = Math.random() * 40 + "vw";
+    star.style.top = Math.random() * 25 + "vh";
+    star.style.left = Math.random() * 45 + "vw";
     sky.appendChild(star);
     setTimeout(() => star.remove(), 3000);
 }
-setInterval(triggerShootingStar, 6000);
-setTimeout(triggerShootingStar, 2000);
+setInterval(triggerShootingStar, 7000);
 
-// Dynamic Floating Quotes Engine
+// Dynamic Jukebox Playlist Logic
+let currentSrc = "";
+function playTrack(fileName, element) {
+    const buttons = document.querySelectorAll('.track-btn');
+    
+    if (currentSrc === fileName && !mainAudio.paused) {
+        mainAudio.pause();
+        element.classList.remove('active');
+        viz.classList.remove('playing');
+    } else {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        if (currentSrc !== fileName) {
+            mainAudio.src = fileName;
+            currentSrc = fileName;
+        }
+        mainAudio.play().catch(e => console.log("Audio waiting for explicit configuration setup interaction."));
+        element.classList.add('active');
+        viz.classList.add('playing');
+    }
+}
+
+// Sunday Time Capsule Engine
+const sundayMessages = [
+    "Happy Sunday Eemanjot! New week, same infinite feelings for you. ❤️",
+    "It's Sunday morning over here, and my very first thought belongs straight to you. ✨",
+    "No matter how heavy the week gets, Sunday always brings me right back to our safe space. 💜",
+    "Sundays feel complete only because I know I get to share another lap around the sun with you. 🌙",
+    "Another Sunday capsule opened. Distance is getting shorter each passing week. 💫"
+];
+
+function updateSundayVault() {
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // 0 is Sunday
+    const vaultHeader = document.getElementById("vaultHeader");
+    const vaultContent = document.getElementById("vaultContent");
+
+    if (dayOfWeek === 0) {
+        // It's Sunday! Unlock explicit letter based on day of month
+        vaultHeader.innerHTML = "🔓 Unlocked Sunday Capsule Only For You";
+        vaultHeader.style.color = "#ffeb3b";
+        const messageIndex = now.getDate() % sundayMessages.length;
+        vaultContent.innerHTML = sundayMessages[messageIndex];
+    } else {
+        // Lock it up and calculate countdown sequence precisely
+        vaultHeader.innerHTML = "🔒 Sunday Capsule Content is Locked";
+        vaultHeader.style.color = "#ff7090";
+        
+        // Find next Sunday 00:00:00 baseline
+        const nextSunday = new Date(now);
+        nextSunday.setDate(now.getDate() + (7 - dayOfWeek));
+        nextSunday.setHours(0, 0, 0, 0);
+        
+        const diff = nextSunday - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        
+        vaultContent.innerHTML = `Next letter arrives in:<br><div class="countdown-timer">${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
+    }
+}
+setInterval(updateSundayVault, 1000);
+updateSundayVault();
+
+// Dynamic Quotes Engine
 const quotes = [
     "Some people arrive unexpectedly and become impossible to forget.",
     "Distance changes places, not feelings.",
@@ -387,10 +525,8 @@ const quotes = [
     "You're my favorite hello and my hardest goodbye.",
     "In every timeline, I choose you."
 ];
-
 let currentQuote = 0;
 const quoteElem = document.getElementById("quote");
-
 setInterval(() => {
     quoteElem.style.opacity = "0";
     setTimeout(() => {
@@ -400,7 +536,7 @@ setInterval(() => {
     }, 500);
 }, 6000);
 
-// High Accuracy Time Engine
+// Global Clocks Update Engine
 function updateClocks(){
     const now = new Date();
     document.getElementById('time-in').innerText = now.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata', hour12: false});
@@ -409,7 +545,7 @@ function updateClocks(){
 setInterval(updateClocks, 1000);
 updateClocks();
 
-// Interactive Open Secrets Handler
+// Interactive Secrets Overlay System
 function openSecret(){
     const popup = document.getElementById("popup");
     popup.style.display = "flex";
@@ -436,11 +572,8 @@ function createHeartFloats(){
             const heart = document.createElement("div");
             heart.className = "hearts-float";
             heart.innerHTML = ["💕", "❤️", "💖", "✨"][Math.floor(Math.random() * 4)];
-            
-            // Positions floaters directly relative to cursor/button action point
             heart.style.left = (rect.left + (rect.width / 2) + (Math.random() * 60 - 30)) + "px";
             heart.style.top = (rect.top + (rect.height / 2) - 20) + "px";
-            
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 2500);
         }, i * 120);
