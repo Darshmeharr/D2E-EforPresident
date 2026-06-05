@@ -489,14 +489,18 @@ EDIT SUNDAY MESSAGES HERE Manually!
 You can write any messages you want below. 
 The code checks which Sunday of the month/year it is and cleanly rotates them.
 */
-const sundayMessages = [
-    "Happy Sunday Eemanjot! New week, same infinite feelings for you. ❤️",
-    "It's Sunday morning over here, and my very first thought belongs straight to you. ✨",
-    "No matter how heavy the week gets, Sunday always brings me right back to our safe space. 💜",
-    "Sundays feel complete only because I know I get to share another lap around the sun with you. 🌙",
-    "Another Sunday capsule opened. Distance is getting shorter each passing week. 💫",
-    "Relax today, my love. You've worked so hard all week. I'm right here with you in spirit. 🌹"
-];
+const sundayMessage = `
+Dear Eemanjot,
+
+This is where I can write my Sunday message.
+
+Every week I can come here and replace this text
+with a new message without changing anything else
+on the website.
+
+❤️
+– Darshmehar
+`;
 
 function updateSundayVault() {
     const now = new Date();
@@ -510,8 +514,7 @@ function updateSundayVault() {
         vaultHeader.style.color = "#ff4d6d";
         
         // Pick a message based on the day's date so it stays consistent all day long
-        const messageIndex = now.getDate() % sundayMessages.length;
-        vaultContent.innerHTML = sundayMessages[messageIndex];
+        vaultContent.innerHTML = sundayMessage;
     } else {
         // Lock it up and calculate countdown sequence precisely
         vaultHeader.innerHTML = "🔒 Sunday Capsule is Locked";
