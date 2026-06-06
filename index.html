@@ -537,7 +537,7 @@ function updateSundayVault() {
         const minutes = Math.floor((diff / (1000 * 60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
         
-        vaultContent.innerHTML = `Next love letter arrives in:<br><div class="countdown-timer">${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
+        vaultContent.innerHTML = `Next love letter arrives in: Click Heart <br><div class="countdown-timer">${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
     }
 }
 setInterval(updateSundayVault, 1000);
