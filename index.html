@@ -451,34 +451,7 @@ h1 {
             </div>
         </div>
 
-       let sundayTyped = false;
-
-function typeWriter(text, element) {
-    element.innerHTML = "";
-
-    let i = 0;
-
-    const typing = setInterval(() => {
-
-        if (i < text.length) {
-
-            if (text.charAt(i) === "\n") {
-                element.innerHTML += "<br>";
-            } else {
-                element.innerHTML += text.charAt(i);
-            }
-
-            i++;
-
-        } else {
-
-            clearInterval(typing);
-            element.innerHTML += '<span class="type-cursor">|</span>';
-
-        }
-
-    }, 35);
-}
+     
 
         <div class="sunday-vault" id="sundayVault">
             <div class="vault-header" id="vaultHeader">🔒 Sunday Message Capsule</div>
