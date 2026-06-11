@@ -366,7 +366,36 @@ h1 {
     15% { opacity: 1; }
     100% { transform: translateY(-160px) scale(1.2); opacity: 0; }
 }
+.rose-petal{
+    position: fixed;
+    top: -50px;
+    font-size: 22px;
+    pointer-events: none;
+    z-index: 2;
+    animation: fallRose linear forwards;
+}
 
+@keyframes fallRose{
+    100%{
+    transform:
+        translateY(110vh)
+        translateX(100px)
+        rotate(540deg);
+
+    opacity: 0;
+}
+   
+    }
+
+    10%{
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 @media(max-width:768px){
     h1 { font-size: 2.2rem; }
     .sub-title { font-size: 1.8rem; }
@@ -695,6 +724,33 @@ function closeSecret(){
     popup.classList.remove('active');
     setTimeout(() => popup.style.display = "none", 400);
 }
+    function createRosePetal(){
+
+    const petal = document.createElement("div");
+
+    petal.className = "rose-petal";
+
+    const petals = ["🌹","🌹","🌹","🌺","❤️"];
+
+    petal.innerHTML =
+        petals[Math.floor(Math.random() * petals.length)];
+
+    petal.style.left = Math.random() * 100 + "vw";
+
+    petal.style.animationDuration =
+        (6 + Math.random() * 5) + "s";
+
+    petal.style.fontSize =
+        (18 + Math.random() * 10) + "px";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, 11000);
+}
+
+setInterval(createRosePetal, 1200);
 </script>
     <!-- Background Music -->
 
