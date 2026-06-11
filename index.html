@@ -406,7 +406,6 @@ h1 {
                 <button class="track-btn" onclick="playTrack('khaaab.mp3', this)">Khaab </button>
                  <button class="track-btn" onclick="playTrack('Supne.mp3', this)">Supne </button>
             </div>
-            </div>
             <div class="visualizer" id="visualizer">
                 <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 <div class="bar"></div><div class="bar"></div><div class="bar"></div>
@@ -439,19 +438,40 @@ h1 {
 </div>
 
 <audio id="mainAudio" loop></audio>
+    <audio id="bgMusic" autoplay loop>
+    <source src="cheque_mashup.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
+function updateClocks() {
+    const now = new Date();
+
+    document.getElementById("time-in").innerText =
+        now.toLocaleTimeString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            hour12: false
+        });
+
+    document.getElementById("time-ca").innerText =
+        now.toLocaleTimeString("en-CA", {
+            timeZone: "America/Vancouver",
+            hour12: false
+        });
+}
+
+setInterval(updateClocks, 1000);
+updateClocks();
 // Background Music Auto Play
 const bgMusic = document.getElementById("bgMusic");
-bgMusic.volume = 0.25; // 25% volume
 
-// Some browsers block autoplay until user interaction
-document.addEventListener("click", () => {
-    if (bgMusic.paused) {
-        bgMusic.play().catch(() => {});
-    }
-}, { once: true });
+if (bgMusic) {
+    bgMusic.volume = 0.25;
+
+    document.addEventListener("click", () => {
+        bgMusic.play().catch(err => console.log(err));
+    }, { once: true });
+}
 const sky = document.getElementById("sky");
 const mainAudio = document.getElementById("mainAudio");
 const viz = document.getElementById("visualizer");
@@ -640,8 +660,6 @@ function closeSecret(){
 }
 </script>
     <!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
-    <source src="cheque_mashup.mp3" type="audio/mpeg">
-</audio>
+
 </body>
 </html>
