@@ -261,6 +261,16 @@ h1 {
     color: #c77dff;
     margin-top: 8px;
 }
+.type-cursor {
+    color: #ff8fa3;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 /* Elegant Romantic Interactive Heart */
 .heart {
@@ -412,6 +422,35 @@ h1 {
             </div>
         </div>
 
+        let sundayTyped = false;
+
+function typeWriter(text, element) {
+    element.innerHTML = "";
+
+    let i = 0;
+
+    const typing = setInterval(() => {
+
+        if (i < text.length) {
+
+            if (text.charAt(i) === "\n") {
+                element.innerHTML += "<br>";
+            } else {
+                element.innerHTML += text.charAt(i);
+            }
+
+            i++;
+
+        } else {
+
+            clearInterval(typing);
+            element.innerHTML += '<span class="type-cursor">|</span>';
+
+        }
+
+    }, 35);
+}
+
         <div class="sunday-vault" id="sundayVault">
             <div class="vault-header" id="vaultHeader">🔒 Sunday Message Capsule</div>
             <div class="vault-content" id="vaultContent">Gathering our moments...</div>
@@ -539,15 +578,10 @@ const sundayMessage = `
 Dear Eemanjot,
 
 This is where I can write my Sunday message.
-
-Every week I can come here and replace this text
-with a new message without changing anything else
-on the website. 
-And sorry for not meeting you at the time when you came to nagar kirtan bcuz of thing going between us
-
-This website is just old skool way of confessing my feelings to you just how rom-coms movies and films used to tell us instead of pigeons I am sending you this .. if you are reading this give me some sign on your ig story on which i can keep a count on to continue this thing or delete it ! Thank you so much 
-
-❤️
+You know what I recently saw your stories, and got to know that you are still tagging your so called boyfriend , 
+If you really want me to stop this what I am doing, please don't loop me around I am not even kidding I would stop this site immediately and would maintain my distance from you . But please let me know I am literally fed up now .. can't remain distance from you either I would be very close to you or either far distant, in my case there is nothing in between like 2 poles..
+I do have options but I am sticking to you... either drop a message on my mail or sign on ig story that's it ..
+love you loads from my side.. rest is upto you
 – Darshmehar
 `;
 
@@ -563,7 +597,10 @@ function updateSundayVault() {
         vaultHeader.style.color = "#ff4d6d";
         
         // Pick a message based on the day's date so it stays consistent all day long
-        vaultContent.innerHTML = sundayMessage;
+        if (!sundayTyped) {
+    typeWriter(sundayMessage, vaultContent);
+    sundayTyped = true;
+}
     } else {
         // Lock it up and calculate countdown sequence precisely
         vaultHeader.innerHTML = "🔒 Sunday Capsule is Locked";
@@ -583,7 +620,7 @@ function updateSundayVault() {
         vaultContent.innerHTML = `Next love letter arrives in: Click Heart <br><div class="countdown-timer">${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
     }
 }
-setInterval(updateSundayVault, 1000);
+setInterval(updateSundayVault, 60000);
 updateSundayVault();
 
 // Dynamic Quotes Engine
