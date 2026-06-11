@@ -441,6 +441,17 @@ h1 {
 <audio id="mainAudio" loop></audio>
 
 <script>
+
+// Background Music Auto Play
+const bgMusic = document.getElementById("bgMusic");
+bgMusic.volume = 0.25; // 25% volume
+
+// Some browsers block autoplay until user interaction
+document.addEventListener("click", () => {
+    if (bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+    }
+}, { once: true });
 const sky = document.getElementById("sky");
 const mainAudio = document.getElementById("mainAudio");
 const viz = document.getElementById("visualizer");
@@ -474,24 +485,30 @@ setInterval(triggerShootingStar, 8000);
 // Dynamic Jukebox Playlist Logic
 let currentSrc = "";
 function playTrack(fileName, element) {
+    bgMusic.pause();
+
     const buttons = document.querySelectorAll('.track-btn');
-    
+
     if (currentSrc === fileName && !mainAudio.paused) {
         mainAudio.pause();
         element.classList.remove('active');
         viz.classList.remove('playing');
+
+        // Resume background music
+        bgMusic.play();
     } else {
         buttons.forEach(btn => btn.classList.remove('active'));
+
         if (currentSrc !== fileName) {
             mainAudio.src = fileName;
             currentSrc = fileName;
         }
-        mainAudio.play().catch(e => console.log("Audio waiting for user interaction configuration."));
+
+        mainAudio.play();
         element.classList.add('active');
         viz.classList.add('playing');
     }
 }
-
 /* ===================================================================
 EDIT SUNDAY MESSAGES HERE Manually!
 ===================================================================
@@ -622,5 +639,9 @@ function closeSecret(){
     setTimeout(() => popup.style.display = "none", 400);
 }
 </script>
+    <!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="cheque_mashup.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
